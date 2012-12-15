@@ -3,16 +3,119 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <title>Scrabble Online</title>
+        <script>
+        function do_colors(){
+			//Culoarea roz
+			if((i == 2 && j == 2) || (i == 3 && j == 3) || (i == 4 && j == 4) || (i == 5 && j == 5)
+				|| (i == 11 && j == 11) || (i == 12 && j == 12) || (i == 13 && j == 13) || (i == 14 && j == 14)
+				|| (i == 2 && j == 14) || (i == 3 && j == 13) || (i == 4 && j == 12) || (i == 5 && j == 11)
+				|| (i == 14 && j == 2) || (i == 13 && j == 3) || (i == 12 && j == 4) || (i == 11 && j == 5)){
+				style = 'background-color:#f4cecd';
+			}
+
+			//Culoarea albastra
+			if((i == 2 && j == 6) || (i == 2 && j == 10) ||
+				(i == 6 && j == 2) || (i == 6 && j == 6) || (i == 6 && j == 10) || (i == 6 && j == 14) ||
+				(i == 10 && j == 2) || (i == 10 && j == 6) || (i == 10 && j == 10) || (i == 10 && j == 14) ||
+				(i == 14 && j == 6) || (i == 14 && j == 10)){
+					style = 'background-color:#66c9e8';
+			}
+
+			//Culoarea rosie
+			if((i == 1 && j == 1) || (i == 1 && j == 8) || (i == 1 && j == 15) || (i == 8 && j == 1) || (i == 15 && j == 1) || (i == 8 && j == 15) || (i == 15 && j == 8) || (i == 15 && j == 15)){
+				style = 'background-color:#ee3940';
+			}
+
+			//Culoarea verde #b8cc69
+			if(
+				(i == 1 && j == 4) || (i == 1 && j == 12) 
+				|| (i == 3 && j == 7) || (i == 3 && j == 9) 
+				|| (i == 4 && j == 8) 
+				|| (i == 4 && j == 1) || (i == 4 && j == 15) 
+				|| (i == 7 && j == 3) || (i == 8 && j == 4) || (i == 9 && j == 3) 
+				|| (i == 7 && j == 7) || (i == 7 && j == 9) 
+				|| (i == 9 && j == 7) || (i == 9 && j == 9) 
+				|| (i == 7 && j == 13) || (i == 9 && j == 13) || (i == 8 && j == 12) 
+				|| (i == 12 && j == 1) || (i == 12 && j == 15) 
+				|| (i == 12 && j == 8) || (i == 13 && j == 7) || (i == 13 && j == 9)
+				|| (i == 15 && j == 4)  || (i == 15 && j == 12) 
+			){
+				style = 'background-color:#b8cc69';
+			}
+    	}
+		</script>
+
+        <style>
+        	body {
+        		background-color: #ffffff;
+        		font-family: Tahoma, Arial;
+        		font-size:15px;
+        	}
+        	#wrap {
+        		margin:0 auto;
+        		width:950px;
+        	}
+        	#table td {
+        		border:1px solid #333333;
+        		padding:10px 10px 10px 10px;
+        		height:10px;
+        		width:10px;
+        	}
+        	#table {
+        		border:1px solid #333333;
+        		text-align:center;
+        		margin-right: 10px;
+        	}
+        	#joc {
+        		float:left;
+        		width:530px;
+        		margin-right: 10px;
+        	}
+        	#player1 {
+        		float:left;
+        		width:200px;
+        		margin-right: 10px;
+        	}
+        	#player2 {
+        		float:left;
+        		width:200px;
+        	}
+        </style>
     </head>
     <body>
-        <h1>New Web Project Page</h1>
-	<script src="/socket.io/socket.io.js"></script>
-	<script>
-	  var socket = io.connect();
-	  socket.on('new_user', function (name) {
-	    alert('new user: ' + name);
-	    // socket.emit('my other event', { my: 'data' }); cand vrei sa trimiti ceva
-	  });
-	</script>
+	    <div id="wrap">
+		    <div id="player1">
+		    	<h3>Player 1</h3>
+		    	<diu id="letter_player_1">
+		    		<div id="a">A</div>
+		    		<div id="r">R</div>
+		    		<div id="y">Y</div>
+		    		<div id="u">U</div>
+		    		<div id="a">A</div>
+		    </div>
+	    	<div id="joc">
+		        <script>
+					var table_size = 16;
+					var style = '';
+					var seccond_diag = 16;
+					var letter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+					document.write('<table id="table" border="0" style="" cellpadding="0" cellspacing="0">');
+					for(var i = 1; i < table_size; i++){ 
+						document.write("<tr>");
+						for(var j = 1; j < table_size; j++){
+							do_colors();
+							document.write('<td id="'+ i + j +'" style="' + style + '"></td>');
+							style = '';
+						}
+						document.write("</tr>");
+					}
+					document.write("</table>");
+		        </script>
+		    </div>
+		    <div id="player2">
+		    	<h3>Player 2</h3>
+		    </div>
+		    <br style="clear:both;">
+   		</div>
     </body>
 </html>
