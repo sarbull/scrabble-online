@@ -46,12 +46,13 @@
 	    <div id="wrap">
 		    <div id="player1">
 		    	<h3>Player 1</h3>
-		    	<diu id="letter_player_1">
+		    	<div id="letter_player_1">
 		    		<div id="a">A</div>
 		    		<div id="r">R</div>
 		    		<div id="y">Y</div>
 		    		<div id="u">U</div>
 		    		<div id="a">A</div>
+		    	</div>
 		    </div>
 	    	<div id="joc">
 		        <script>
@@ -61,10 +62,10 @@
 					var letter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 					document.write('<table id="table" border="0" style="" cellpadding="0" cellspacing="0">');
 					for(var i = 1; i < table_size; i++){ 
-						document.write("<tr>");
+						document.write('<tr id="r' + i + '">');
 						for(var j = 1; j < table_size; j++){
 							do_colors();
-							document.write('<td id="'+ i + j +'" style="' + style + '"></td>');
+							document.write('<td id="c'+ i + j +'" style="' + style + '"></td>');
 							style = '';
 						}
 						document.write("</tr>");
