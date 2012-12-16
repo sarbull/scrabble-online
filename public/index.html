@@ -63,6 +63,7 @@
                 ev.preventDefault();
                 var data = ev.dataTransfer.getData("Text");
                 ev.target.innerHTML = document.getElementById(data).innerHTML;
+                document.getElementById(data).innerHTML = "";
             }
         </script>
     </head>
