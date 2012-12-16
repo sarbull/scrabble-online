@@ -1,5 +1,13 @@
 function do_colors(){
 			//Culoarea roz
+
+			var random_number = Math.floor(Math.random()*2);
+			if(random_number == 1){
+				style="background-image:url(images/darker.png)";
+			} else {
+				style="background-image:url(images/lighter.png)";
+			}
+
 			if((i == 2 && j == 2) || (i == 3 && j == 3) || (i == 4 && j == 4) || (i == 5 && j == 5)
 				|| (i == 11 && j == 11) || (i == 12 && j == 12) || (i == 13 && j == 13) || (i == 14 && j == 14)
 				|| (i == 2 && j == 14) || (i == 3 && j == 13) || (i == 4 && j == 12) || (i == 5 && j == 11)
