@@ -275,13 +275,13 @@
                             if (x != "" && x!= undefined) {
                                 cuvantnou = cuvantnou + x;
                                 var culoare = document.getElementById("c"+i+"_"+j).getAttribute("style");
-                                if (culoare == "")
+                                if (culoare == "background-image:url(images/lighter.png)" || culoare == "background-image:url(images/darker.png)")
                                     punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
                                 if (culoare == "background-color:#f4cecd") { //roz
                                     punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
                                     multiplicator = multiplicator * 2;
                                 }
-                                if (culoare == "background-color:#66c9") { //albastru
+                                if (culoare == "background-color:#66c9e8") { //albastru
                                     punctajpartial = punctajpartial + 3*punctaj[alfabet.indexOf(x)];
                                 }
                                 if (culoare == "background-color:#ee3940") { //rosu
@@ -343,13 +343,13 @@
                             if (x != "" && x!= undefined) {
                                 cuvantnou = cuvantnou + x;
                                 var culoare = document.getElementById("c"+j+"_"+i).getAttribute("style");
-                                if (culoare == "")
+                                if (culoare == "background-image:url(images/lighter.png)" || culoare == "background-image:url(images/darker.png)")
                                     punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
                                 if (culoare == "background-color:#f4cecd") { //roz
                                     punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
                                     multiplicator = multiplicator * 2;
                                 }
-                                if (culoare == "background-color:#66c9") {  //albastru
+                                if (culoare == "background-color:#66c9e8") {  //albastru
                                     punctajpartial = punctajpartial + 3*punctaj[alfabet.indexOf(x)];
                                 }
                                 if (culoare == "background-color:#ee3940") { //rosu
@@ -445,5 +445,6 @@
         <script>
             restore();
         </script>
+        <center><form><input id = "verif" type="button" name="Verificare" value="Verificare" onclick="verify()"></form></center>
     </body>
 </html>
