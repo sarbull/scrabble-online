@@ -64,11 +64,38 @@
         		float:left;
         		width:200px;
         	}
+            #login {
+                font-family: 'Elsie Swash Caps', cursive;
+                margin:auto;
+                text-align: center;
+                margin-top: 150px;
+                font-size: 25px;
+                width:500px;
+            }
+            #login .input_2 {
+                font-family: 'Elsie Swash Caps', cursive;
+                font-size: 25px;
+                background: transparent;
+                border: 3px dashed #5C2E00;
+                padding: 10px;
+            }
         	#monlogo {
         		border-radius: 5px;
         		-moz-border-radius: 5px;
         		margin-bottom: 15px;
         	}
+            #blogin {
+                font-family: 'Elsie Swash Caps', cursive;
+                font-size: 30px;
+                margin: 0 auto;
+                margin-bottom: 20px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                width: 200px;
+                position: relative;
+                left: -20px;
+                cursor:pointer;
+            }
         	#verif {
                 font-family: 'Elsie Swash Caps', cursive;
         		font-size: 30px;
@@ -81,6 +108,12 @@
         		left: -20px;
                 cursor:pointer;
         	}
+            .hidden {
+                display: none;
+            }
+            #others {
+                display: none;
+            }
             #refacere {
                 font-family: 'Elsie Swash Caps', cursive;
                 font-size: 30px;
@@ -113,6 +146,70 @@
         </script>
     </head>
     <body>
+        <script>
+
+        var fade_in_from = 0;
+var fade_out_from = 10;
+function fadeIn(element){
+    //console.log('Got: '+element);
+    var target = document.getElementById(element);
+    target.style.display = "block";
+    var newSetting = fade_in_from / 10;
+    target.style.opacity = newSetting;
+    // opacity ranges from 0 to 1
+    fade_in_from++;
+    if(fade_in_from == 10){
+        target.style.opacity = 1;
+        clearTimeout(loopTimer);
+        fade_in_from = 0;
+        return false;
+    }
+    var loopTimer = setTimeout('fadeIn(\''+element+'\')',50);
+}
+function fadeOut(element){
+    var target = document.getElementById(element);
+    var newSetting = fade_out_from / 10;
+    target.style.opacity = newSetting;
+    fade_out_from--;
+    if(fade_out_from == 0){
+        target.style.opacity = 0;
+        target.style.display = "none";
+        clearTimeout(loopTimer);
+        fade_out_from = 10;
+        return false;
+    }
+    var loopTimer = setTimeout('fadeOut(\''+element+'\')',50);
+}
+
+        function dologin(){
+            document.getElementById("player_unu").innerHTML = document.getElementById("iinput_one").value;
+            document.getElementById("player_doi").innerHTML = document.getElementById("iinput_doi").value;
+            if (document.getElementById("player_unu").innerHTML != undefined && document.getElementById("player_unu").innerHTML != "" && document.getElementById("player_doi").innerHTML != undefined && document.getElementById("player_doi").innerHTML != "") {
+                fadeOut("login");
+                setTimeout("fadeIn(\'others\')",500);
+            }
+        }
+
+        </script>
+        <div id = "login" style="">
+            <form>
+                <table>
+                    <tr>
+                        <td>First Player:</td>
+                        <td><input id="iinput_one" class="input_2" type="text" name="firstplayer"></td>
+                    </tr>
+                    <tr>
+                        <td>Second Player:</td>
+                        <td><input id="iinput_doi" class="input_2" type="text" name="secondplayer"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:right;"> <input id = "blogin" type="button" name="Login" value="Start Game" onclick="dologin()"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+                
+        <div id = "others"> 
     	<div align="center"> <img id="monlogo" src="images/logo.png"> </div>
         <script>
             
@@ -141,9 +238,9 @@
             var lp2restore = [];
         </script>
 
-	    <div id="wrap">
+	    <div id="wrap" style="">
 		    <div id="player1">
-		    	<h3>Player 1</h3>
+		    	<h3 id="player_unu">Player 1</h3>
                 Scor: <div id="punctaj_player1">0</div>
                 <br>
                 <br>
@@ -178,7 +275,7 @@
 		    </div>
 
 		    <div id="player2">
-		    	<h3>Player 2</h3>
+		    	<h3 id="player_doi">Player 2</h3>
                 Scor: <div id="punctaj_player2">0</div>
                 <br>
                 <br>
@@ -247,6 +344,9 @@
                     if (gamewon == 1)
                         alert("Jocul s-a incheiat deja!");
                     else{
+                        var pname1 = document.getElementById("player_unu").innerHTML;
+                        console.log(pname1);
+                        var pname2 = document.getElementById("player_doi").innerHTML
                         var puc1 = document.getElementById("punctaj_player1").innerHTML;
                         var puc2 = document.getElementById("punctaj_player2").innerHTML;
                         var i;
@@ -260,9 +360,9 @@
                             gamewon = 1;
                             puc1 = puc1 + 50;
                             if (puc1 > puc2)
-                                alert("Player 1 a castigat!");
+                                alert(pname1 + " a castigat!");
                             else
-                                alert("Player 2 a castigat!");
+                                alert(pname2 + " a castigat!");
                         }
                         else{
                             var ok2 = 1;
@@ -275,9 +375,9 @@
                                 gamewon = 1;
                                 puc2 = puc2 + 50;
                                 if (puc2 > puc1)
-                                    alert("Player 2 a castigat!");
+                                    alert(pname2 + " a castigat!");
                                 else
-                                    alert("Player 1 a castigat!");
+                                    alert(pname1 + " a castigat!");
                             }
                         }
                     }
@@ -500,6 +600,7 @@
         <br>
         <div align="center"><form><input id = "verif" type="button" name="Verificare" value="Verificare" onclick="verify()"> <input id = "refacere"type="button" name="Restore" value="Restore" onclick="restorify()"></form></div>
         <br>
+    </div>
         <script>
             restore();
         </script>
