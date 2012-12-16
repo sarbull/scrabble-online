@@ -39,6 +39,7 @@
                 -moz-border-radius:5px;
                 border-radius: 5px;
                 border:2px solid #7e2e1f;
+                cursor:pointer;
             }
             h3 {
                 margin:0;
@@ -78,7 +79,20 @@
         		width: 200px;
         		position: relative;
         		left: -20px;
+                cursor:pointer;
         	}
+            #refacere {
+                font-family: 'Elsie Swash Caps', cursive;
+                font-size: 30px;
+                margin: 0 auto;
+                margin-bottom: 20px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                width: 200px;
+                position: relative;
+                left: -20px;
+                cursor:pointer;
+            }
         </style>
         <!-- Drag and drop -->
         <script>
@@ -100,8 +114,7 @@
     </head>
     <body>
     	<div align="center"> <img id="monlogo" src="images/logo.png"> </div>
-        <div align="center"><form><input id = "verif" type="button" name="Verificare" value="Verificare" onclick="verify()"></form></div>
-        <div align="center"><form><input id = "refacere" type="button" name="Restore" value="Restore" onclick="restorify()"></form></div>
+        <div align="center"><form><input id = "verif" type="button" name="Verificare" value="Verificare" onclick="verify()"> <input id = "refacere"type="button" name="Restore" value="Restore" onclick="restorify()"></form></div>
         <script>
             
             Array.prototype.remove = function(from, to) {
