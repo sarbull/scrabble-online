@@ -19,10 +19,16 @@
         	}
         	#table td {
         		border:1px solid #333333;
-        		padding:10px 10px 10px 10px;
-        		height:10px;
-        		width:10px;
+        		/*padding:15px 15px 15px 15px;*/
+                width:30px;
+                height:30px;
         	}
+
+            .litera {
+                width:15px;
+                height:15px;
+            }
+
         	#table {
         		border:1px solid #333333;
         		text-align:center;
@@ -43,6 +49,22 @@
         		width:200px;
         	}
         </style>
+        <!-- Drag and drop -->
+        <script>
+            function allowDrop(ev){
+                ev.preventDefault();
+            }
+
+            function drag(ev){
+                ev.dataTransfer.setData("Text", ev.target.id);
+            }
+
+            function drop(ev){
+                ev.preventDefault();
+                var data = ev.dataTransfer.getData("Text");
+                ev.target.innerHTML = document.getElementById(data).innerHTML;
+            }
+        </script>
     </head>
     <body>
         <script>
@@ -71,13 +93,13 @@
 		    <div id="player1">
 		    	<h3>Player 1</h3>
 		    	<div id="letters_player1">
-		    		<div id="lp11"></div>
-		    		<div id="lp12"></div>
-		    		<div id="lp13"></div>
-		    		<div id="lp14"></div>
-		    		<div id="lp15"></div>
-                    <div id="lp16"></div>
-                    <div id="lp17"></div>
+		    		<div id="lp11" class="litera" draggable="true" ondragstart="drag(event)"></div>
+		    		<div id="lp12" class="litera" draggable="true" ondragstart="drag(event)"></div>
+		    		<div id="lp13" class="litera" draggable="true" ondragstart="drag(event)"></div>
+		    		<div id="lp14" class="litera" draggable="true" ondragstart="drag(event)"></div>
+		    		<div id="lp15" class="litera" draggable="true" ondragstart="drag(event)"></div>
+                    <div id="lp16" class="litera" draggable="true" ondragstart="drag(event)"></div>
+                    <div id="lp17" class="litera" draggable="true" ondragstart="drag(event)"></div>
 		    	</div>
                 <br>
                 <div id="punctaj_player1">0</div>
@@ -93,7 +115,7 @@
 						document.write('<tr id="r' + i + '">');
 						for(var j = 1; j < table_size; j++){
 							do_colors();
-							document.write('<td id="c'+ i + j +'" style="' + style + '"></td>');
+							document.write('<td id="c'+ i + j +'" ondrop="drop(event)" ondragover="allowDrop(event)" style="' + style + '"></td>');
 							style = '';
 						}
 						document.write("</tr>");
@@ -105,19 +127,17 @@
 		    <div id="player2">
 		    	<h3>Player 2</h3>
                 <div id="letters_player2">
-                    <div id="lp21"></div>
-                    <div id="lp22"></div>
-                    <div id="lp23"></div>
-                    <div id="lp24"></div>
-                    <div id="lp25"></div>
-                    <div id="lp26"></div>
-                    <div id="lp27"></div>
+                    <div id="lp21" class="litera" draggable="true" ondragstart="drag(event)"></div>
+                    <div id="lp22" class="litera" draggable="true" ondragstart="drag(event)"></div>
+                    <div id="lp23" class="litera" draggable="true" ondragstart="drag(event)"></div>
+                    <div id="lp24" class="litera" draggable="true" ondragstart="drag(event)"></div>
+                    <div id="lp25" class="litera" draggable="true" ondragstart="drag(event)"></div>
+                    <div id="lp26" class="litera" draggable="true" ondragstart="drag(event)"></div>
+                    <div id="lp27" class="litera" draggable="true" ondragstart="drag(event)"></div>
                 </div>
-		    </div>
-            <br>
-            <br>
             <br>
             <div id="punctaj_player2">0</div>
+		    </div>
 		    <br style="clear:both;">
    		</div>
         <script>
