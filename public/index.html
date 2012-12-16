@@ -346,7 +346,7 @@ function fadeOut(element){
                     else{
                         var pname1 = document.getElementById("player_unu").innerHTML;
                         console.log(pname1);
-                        var pname2 = document.getElementById("player_doi").innerHTML
+                        var pname2 = document.getElementById("player_doi").innerHTML;
                         var puc1 = document.getElementById("punctaj_player1").innerHTML;
                         var puc2 = document.getElementById("punctaj_player2").innerHTML;
                         var i;
@@ -578,10 +578,23 @@ function fadeOut(element){
                         restore();
                     }
                 }
+
+                function giveup() {
+                    gamewon = 1;
+
+                        var pname1 = document.getElementById("player_unu").innerHTML;
+                        console.log(pname1);
+                        var pname2 = document.getElementById("player_doi").innerHTML;
+                    if (playerturn == 1)
+                        alert(pname1 + " a renuntat!");
+                    else
+                        alert(pname2 + " a renuntat!");
+                }
             </script>
         </div>        
         <br>
-        <div align="center"><form><input id = "verif" type="button" name="Verificare" value="Verificare" onclick="verify()"> <input id = "refacere"type="button" name="Restore" value="Restore" onclick="restorify()"></form></div>
+        <div align="center"><form><input id = "verif" type="button" name="Verificare" value="Verificare" onclick="verify()"> <input id = "refacere"type="button" name="Restore" value="Restore" onclick="restorify()"></form>
+         <input id = "refacere"type="button" name="Ma dau batut!" value="Ma dau batut!" onclick="giveup()"></div>
         <br>
     </div>
         <script>
