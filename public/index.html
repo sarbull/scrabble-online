@@ -444,14 +444,8 @@ function fadeOut(element){
                             }
                             if ((x == "" || x == undefined) && cuvantnou != "" && cuvantnou.length > 1) {
                                 if (cuvintedepetabela.indexOf(cuvantnou) == -1) {
-                                    var response;
-                                    $.ajax({
-                                        url: '/hackathon-final-webdev/Scrabble-Online/public/php/verifica_cuvant.php?cuvant='+cuvantnou,
-                                        method:'get',
-                                        success: function(transport) {
-                                            response = parseInt(transport,10) || 0;
-                                            // alert("Success! \n\n" + response);
-                                            if (response != 0) {
+                                    var response = 1;
+                                        if (response != 0) {
                                                 cuvinteadaugate = cuvinteadaugate.concat(cuvantnou);
                                                 cuvantnou = "";
                                                 if (playerturn == 1)
@@ -466,9 +460,7 @@ function fadeOut(element){
                                                 punctajpartial = 0;
                                                 cuvantnou = "";
                                             }
-                                        },
-                                        failure: function() { alert('Something went wrong...'); }
-                                    });
+                                        
                                     
                                 }
                                 else{  
@@ -510,17 +502,10 @@ function fadeOut(element){
                                     punctajpartial = punctajpartial + 2*punctaj[alfabet.indexOf(x)];
                                 }               
                             }
-                            if ((x == "" || x== undefined) && cuvantnou != "" && cuvantnou.length > 1) {
+                            if ((x == "" || x == undefined) && cuvantnou != "" && cuvantnou.length > 1) {
                                 if (cuvintedepetabela.indexOf(cuvantnou) == -1) {
-                                    console.log(cuvantnou);
-                                    var response;
-                                    $.ajax({
-                                        url: '/hackathon-final-webdev/Scrabble-Online/public/php/verifica_cuvant.php?cuvant='+cuvantnou,
-                                        method:'get',
-                                        success: function(transport) {
-                                            response = parseInt(transport,10) || 0;
-                                            // alert("Success! \n\n" + response);
-                                            if (response != 0) {
+                                    var response = 1;
+                                        if (response != 0) {
                                                 cuvinteadaugate = cuvinteadaugate.concat(cuvantnou);
                                                 cuvantnou = "";
                                                 if (playerturn == 1)
@@ -529,16 +514,14 @@ function fadeOut(element){
                                                     punctaj_player2 = punctaj_player2 + punctajpartial * multiplicator;
                                                 multiplicator = 1;
                                                 punctajpartial = 0;
-                                            }
-                                            else{
+                                            } else {
                                                 ok = 0;
                                                 multiplicator = 1;
                                                 punctajpartial = 0;
                                                 cuvantnou = "";
                                             }
-                                        },
-                                        failure: function() { alert('Something went wrong...'); }
-                                    });
+                                        
+                                    
                                 }
                                 else{  
                                     multiplicator = 1;
