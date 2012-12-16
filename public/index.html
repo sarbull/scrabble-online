@@ -229,11 +229,13 @@
                         console.log("ok");
                     }
                 }
-                
+
                 function winningconditions(){
                     if (gamewon == 1)
                         alert("Jocul s-a incheiat deja!");
                     else{
+                        var puc1 = document.getElementById("punctaj_player1").innerHTML;
+                        var puc2 = document.getElementById("punctaj_player2").innerHTML;
                         var i;
                         var ok = 1;
                         for (i = 1; i < 8; i++)
@@ -243,7 +245,11 @@
                             }
                         if (ok == 1){
                             gamewon = 1;
-                            alert("Player 1 a castigat!");
+                            puc1 = puc1 + 50;
+                            if (puc1 > puc2)
+                                alert("Player 1 a castigat!");
+                            else
+                                alert("Player 2 a castigat!");
                         }
                         else{
                             var ok2 = 1;
@@ -254,7 +260,11 @@
                                 }
                             if (ok2 == 1){
                                 gamewon = 1;
-                                alert("Player 2 a castigat!");
+                                puc2 = puc2 + 50;
+                                if (puc2 > puc1)
+                                    alert("Player 2 a castigat!");
+                                else
+                                    alert("Player 1 a castigat!");
                             }
                         }
                     }
