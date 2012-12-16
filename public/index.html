@@ -129,10 +129,13 @@
                             break;
                         var rand = Math.floor(Math.random()*litereramaseinsac);
                         console.log(rand);
-                        if (document.getElementById("lp"+player+i).innerHTML == "")
+                        if (document.getElementById("lp"+player+i).innerHTML == "") {
+                            var rand = Math.floor(Math.random()*litereramaseinsac);
+                            console.log(rand);
                             document.getElementById("lp"+player+i).innerHTML = saculetculitere[rand];
-                        saculetculitere.remove(rand,rand);
-                        litereramaseinsac = litereramaseinsac - 1;
+                            saculetculitere.remove(rand,rand);
+                            litereramaseinsac = litereramaseinsac - 1;
+                        }
                     }
                 }
             }
@@ -204,7 +207,7 @@
                             var x = document.getElementById("c"+i+j).innerHTML;
                             if (x != "") {
                                 cuvantnou = cuvantnou + x;
-                                var culoare = x.getAttribute("style");
+                                var culoare = document.getElementById("c"+i+j).getAttribute("style");
                                 if (culoare == "")
                                     punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x.innerHTML)];
                                 if (culoare == "background-color:#f4cecd") {
@@ -222,7 +225,7 @@
                                     punctajpartial = punctajpartial + 2*punctaj[alfabet.indexOf(x.innerHTML)];
                                 }               
                             }
-                            if (x == "" && cuvantnou != "") {
+                            if (x == "" && cuvantnou != "" && cuvantnou.length > 1) {
                                 if (cuvintedepetabela.indexOf(cuvantnou) == -1) {
                                     var response;
                                     $.ajax({
@@ -258,7 +261,7 @@
                             var x = document.getElementById("c"+j+i).innerHTML;
                             if (x != "") {
                                 cuvantnou = cuvantnou + x;
-                                var culoare = x.getAttribute("style");
+                                var culoare = document.getElementById("c"+j+i).getAttribute("style");
                                 if (culoare == "")
                                     punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x.innerHTML)];
                                 if (culoare == "background-color:#f4cecd") {
@@ -276,7 +279,7 @@
                                     punctajpartial = punctajpartial + 2*punctaj[alfabet.indexOf(x.innerHTML)];
                                 }               
                             }
-                            if (x == "" && cuvantnou != "") {
+                            if (x == "" && cuvantnou != "" && cuvantnou.length > 1) {
                                 if (cuvintedepetabela.indexOf(cuvantnou) == -1) {
                                     var response;
                                     $.ajax({
