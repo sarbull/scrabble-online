@@ -346,30 +346,30 @@
                                 if (cuvintedepetabela.indexOf(cuvantnou) == -1) {
                                     var response;
                                     $.ajax({
-                                        url: 'http://172.24.123.76/hackathon-final-webdev/Scrabble-Online/public/php/verifica_cuvant.php?cuvant='+cuvantnou,
+                                        url: '/hackathon-final-webdev/Scrabble-Online/public/php/verifica_cuvant.php?cuvant='+cuvantnou,
                                         method:'get',
                                         success: function(transport) {
-                                        response = parseInt(transport,10) || 0;
-                                        // alert("Success! \n\n" + response);
+                                            response = parseInt(transport,10) || 0;
+                                            // alert("Success! \n\n" + response);
+                                            if (response != 0) {
+                                                cuvinteadaugate = cuvinteadaugate.concat(cuvantnou);
+                                                cuvantnou = "";
+                                                if (playerturn == 1)
+                                                    punctaj_player1 = punctaj_player1 + punctajpartial * multiplicator;
+                                                else
+                                                    punctaj_player2 = punctaj_player2 + punctajpartial * multiplicator;
+                                                multiplicator = 1;
+                                                punctajpartial = 0;
+                                            } else {
+                                                ok = 0;
+                                                multiplicator = 1;
+                                                punctajpartial = 0;
+                                                cuvantnou = "";
+                                            }
                                         },
                                         failure: function() { alert('Something went wrong...'); }
                                     });
-                                    if (response != 0) {
-                                        cuvinteadaugate = cuvinteadaugate.concat(cuvantnou);
-                                        cuvantnou = "";
-                                        if (playerturn == 1)
-                                            punctaj_player1 = punctaj_player1 + punctajpartial * multiplicator;
-                                        else
-                                            punctaj_player2 = punctaj_player2 + punctajpartial * multiplicator;
-                                        multiplicator = 1;
-                                        punctajpartial = 0;
-                                    }
-                                    else{
-                                        ok = 0;
-                                        multiplicator = 1;
-                                        punctajpartial = 0;
-                                        cuvantnou = "";
-                                    }
+                                    
                                 }
                                 else{  
                                     multiplicator = 1;
@@ -415,30 +415,30 @@
                                     console.log(cuvantnou);
                                     var response;
                                     $.ajax({
-                                        url: 'http://172.24.123.76/hackathon-final-webdev/Scrabble-Online/public/php/verifica_cuvant.php?cuvant='+cuvantnou,
+                                        url: '/hackathon-final-webdev/Scrabble-Online/public/php/verifica_cuvant.php?cuvant='+cuvantnou,
                                         method:'get',
                                         success: function(transport) {
-                                        response = parseInt(transport,10) || 0;
-                                        // alert("Success! \n\n" + response);
+                                            response = parseInt(transport,10) || 0;
+                                            // alert("Success! \n\n" + response);
+                                            if (response != 0) {
+                                                cuvinteadaugate = cuvinteadaugate.concat(cuvantnou);
+                                                cuvantnou = "";
+                                                if (playerturn == 1)
+                                                    punctaj_player1 = punctaj_player1 + punctajpartial * multiplicator;
+                                                else
+                                                    punctaj_player2 = punctaj_player2 + punctajpartial * multiplicator;
+                                                multiplicator = 1;
+                                                punctajpartial = 0;
+                                            }
+                                            else{
+                                                ok = 0;
+                                                multiplicator = 1;
+                                                punctajpartial = 0;
+                                                cuvantnou = "";
+                                            }
                                         },
                                         failure: function() { alert('Something went wrong...'); }
                                     });
-                                    if (response != 0) {
-                                        cuvinteadaugate = cuvinteadaugate.concat(cuvantnou);
-                                        cuvantnou = "";
-                                        if (playerturn == 1)
-                                            punctaj_player1 = punctaj_player1 + punctajpartial * multiplicator;
-                                        else
-                                            punctaj_player2 = punctaj_player2 + punctajpartial * multiplicator;
-                                        multiplicator = 1;
-                                        punctajpartial = 0;
-                                    }
-                                    else{
-                                        ok = 0;
-                                        multiplicator = 1;
-                                        punctajpartial = 0;
-                                        cuvantnou = "";
-                                    };
                                 }
                                 else{  
                                     multiplicator = 1;
