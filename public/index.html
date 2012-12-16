@@ -60,6 +60,17 @@
         		float:left;
         		width:200px;
         	}
+        	#verif {
+                font-family: 'Elsie Swash Caps', cursive;
+        		font-size: 30px;
+        		margin: 0 auto;
+        		margin-bottom: 20px;
+        		-moz-border-radius: 5px;
+        		border-radius: 5px;
+        		width: 200px;
+        		position: relative;
+        		left: -20px;
+        	}
         </style>
         <!-- Drag and drop -->
         <script>
@@ -80,6 +91,7 @@
         </script>
     </head>
     <body>
+        <div align="center"><form><input id = "verif" type="button" name="Verificare" value="Verificare" onclick="verify()"></form></div>
         <script>
             
             Array.prototype.remove = function(from, to) {
@@ -427,6 +439,5 @@
         <script>
             restore();
         </script>
-        <center><form><input type="button" name="Verificare" value="Verificare" onclick="verify()"></form></center>
     </body>
 </html>
