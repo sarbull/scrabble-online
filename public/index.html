@@ -115,7 +115,7 @@
 						document.write('<tr id="r' + i + '">');
 						for(var j = 1; j < table_size; j++){
 							do_colors();
-							document.write('<td id="c'+ i + j +'" ondrop="drop(event)" ondragover="allowDrop(event)" style="' + style + '"></td>');
+							document.write('<td id="c'+ i + "_" + j +'" ondrop="drop(event)" ondragover="allowDrop(event)" style="' + style + '"></td>');
 							style = '';
 						}
 						document.write("</tr>");
