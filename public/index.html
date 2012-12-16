@@ -226,7 +226,7 @@
                     for (i=1; i<16; i++) {
                         var cuvantnou = "";
                         for (j=1; j<16; j++) {
-                            var x = document.getElementById("c"+i+j).innerHTML;
+                            var x = document.getElementById("c"+i+"_"+j).innerHTML;
                             if (x != "") {
                                 cuvantnou = cuvantnou + x;
                                 var culoare = document.getElementById("c"+i+j).getAttribute("style");
@@ -283,7 +283,7 @@
                             var x = document.getElementById("c"+j+i).innerHTML;
                             if (x != "") {
                                 cuvantnou = cuvantnou + x;
-                                var culoare = document.getElementById("c"+j+i).getAttribute("style");
+                                var culoare = document.getElementById("c"+j+"_"+i).getAttribute("style");
                                 if (culoare == "")
                                     punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
                                 if (culoare == "background-color:#f4cecd") {
@@ -363,6 +363,7 @@
                         playerturn = 3 - playerturn;
                         randomlettersofdoom(3 - playerturn);
                         winningconditions();
+                        
                     }
                 }
             </script>
