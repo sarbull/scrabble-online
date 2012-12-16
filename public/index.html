@@ -134,6 +134,7 @@
             var playerturn = 1;
             var cuvintedepetabela = [];
             var gamewon = 0;
+            var firstturn = 1;
 
             var arrayrestore = [];
             var lp1restore = [];
@@ -451,6 +452,12 @@
                     if (cuvinteadaugate.length == 0)
                         ok = 0;
 
+                    if (firstturn == 1 && (document.getElementById("c8_8").innerHTML == undefined || document.getElementById("c8_8").innerHTML == "")){
+                        ok = 0;
+                        alert("Primul cuvant trebuie sa treaca prin centru!");
+                    }
+                        
+
                     if (ok == 0) { //revenim la starea initiala
                         var i;
                         var j;
@@ -482,6 +489,7 @@
                         else
                             document.getElementById("punctaj_player2").innerHTML = punctaj_player2;
                         playerturn = 3 - playerturn;
+                        firstturn = 0;
                         randomlettersofdoom(3 - playerturn);
                         winningconditions();
                         restore();
