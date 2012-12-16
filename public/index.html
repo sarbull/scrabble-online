@@ -249,6 +249,8 @@
 
                     //verificare pe linii
                     for (i=1; i<16; i++) {
+                        punctajpartial = 0;
+                        multiplicator = 1;
                         var cuvantnou = "";
                         for (j=1; j<16; j++) {
                             var x = document.getElementById("c"+i+"_"+j).innerHTML;
@@ -310,8 +312,13 @@
                         }
                     }
 
+                    punctajpartial = 0;
+                    multiplicator = 1;
+
                     //verificare pe coloane
                     for (i=1; i<16; i++) {
+                        punctajpartial = 0;
+                        multiplicator = 1;
                         var cuvantnou = "";
                         for (j=1; j<16; j++) {
                             var x = document.getElementById("c"+j+"_"+i).innerHTML;
@@ -337,6 +344,7 @@
                             }
                             if ((x == "" || x== undefined) && cuvantnou != "" && cuvantnou.length > 1) {
                                 if (cuvintedepetabela.indexOf(cuvantnou) == -1) {
+                                    console.log(cuvantnou);
                                     var response;
                                     $.ajax({
                                         url: 'http://172.24.123.76/hackathon-final-webdev/Scrabble-Online/public/php/verifica_cuvant.php?cuvant='+cuvantnou,
