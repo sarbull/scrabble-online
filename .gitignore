@@ -1,0 +1,10 @@
+# Temp files #
+###################
+*.js~
+*.html~
+*.php~
+
+# Project files #
+#################
+.project
+.DS_Store
