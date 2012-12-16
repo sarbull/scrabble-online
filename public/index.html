@@ -90,9 +90,8 @@
             var gamewon = 0;
 
             var arrayrestore = [];
-                    for (var i = 1; i < 16; i++)
-                        for (var j = 1; j < 16; j++)
-                            arrayrestore = arrayrestore.concat(document.getElementById("c"+i+j).innerHTML);
+            var lp1restore = [];
+            var lp2restore = [];
         </script>
 
 	    <div id="wrap">
@@ -204,8 +203,24 @@
                     }
                 }
 
+                function restore() {
+
+                    arrayrestore = [];
+                    lp1restore = [];
+                    lp2restore = [];
+                    for (var i = 1; i < 16; i++)
+                        for (var j = 1; j < 16; j++)
+                            arrayrestore = arrayrestore.concat(document.getElementById("c"+i+"_"+j).innerHTML);
+                    console.log(arrayrestore);
+                    for (i = 1; i < 8; i++) {
+                        lp1restore = lp1restore.concat(document.getElementById("lp1"+i).innerHTML);
+                        lp2restore = lp2restore.concat(document.getElementById("lp2"+i).innerHTML);
+                    }
+
+                }
+
                 function verify(){
-                        
+
                     var alfabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "L", "M", "N", "O", "P", "R", "S", "T", "U", "V", "X", "Z"];
                     var punctaj = [1, 9, 1, 2, 1, 8, 9, 10, 1, 10, 1, 4, 1, 1, 2, 1, 1, 1, 1, 8, 10, 10]
                     var i;
@@ -214,9 +229,7 @@
                     var punctaj_player1 = parseInt(document.getElementById("punctaj_player1").innerHTML);
                     var punctaj_player2 = parseInt(document.getElementById("punctaj_player2").innerHTML);
                         
-                    var letters_restore = [];
-                    for (i = 1; i < 8; i++)
-                        letters_restore = letters_restore.concat(document.getElementById("lp"+playerturn+i).innerHTML);
+                    
 
                     var punctajpartial = 0;
                     var multiplicator = 1;
@@ -227,27 +240,27 @@
                         var cuvantnou = "";
                         for (j=1; j<16; j++) {
                             var x = document.getElementById("c"+i+"_"+j).innerHTML;
-                            if (x != "") {
+                            if (x != "" && x!= undefined) {
                                 cuvantnou = cuvantnou + x;
-                                var culoare = document.getElementById("c"+i+j).getAttribute("style");
+                                var culoare = document.getElementById("c"+i+"_"+j).getAttribute("style");
                                 if (culoare == "")
                                     punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
-                                if (culoare == "background-color:#f4cecd") {
+                                if (culoare == "background-color:#f4cecd") { //roz
                                     punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
                                     multiplicator = multiplicator * 2;
                                 }
-                                if (culoare == "background-color:#66c9") {
+                                if (culoare == "background-color:#66c9") { //albastru
                                     punctajpartial = punctajpartial + 3*punctaj[alfabet.indexOf(x)];
                                 }
-                                if (culoare == "background-color:#ee3940") {
+                                if (culoare == "background-color:#ee3940") { //rosu
                                     punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
                                     multiplicator = multiplicator * 3;
                                 }
-                                if (culoare == "background-color:#b8cc69") {
+                                if (culoare == "background-color:#b8cc69") { //verde
                                     punctajpartial = punctajpartial + 2*punctaj[alfabet.indexOf(x)];
                                 }               
                             }
-                            if (x == "" && cuvantnou != "" && cuvantnou.length > 1) {
+                            if ((x == "" || x == undefined) && cuvantnou != "" && cuvantnou.length > 1) {
                                 if (cuvintedepetabela.indexOf(cuvantnou) == -1) {
                                     var response;
                                     $.ajax({
@@ -269,8 +282,17 @@
                                         multiplicator = 1;
                                         punctajpartial = 0;
                                     }
-                                    else
+                                    else{
                                         ok = 0;
+                                        multiplicator = 1;
+                                        punctajpartial = 0;
+                                        cuvantnou = "";
+                                    }
+                                }
+                                else{  
+                                    multiplicator = 1;
+                                    punctajpartial = 0;
+                                    cuvantnou = "";
                                 }
                             }
                         }
@@ -280,28 +302,28 @@
                     for (i=1; i<16; i++) {
                         var cuvantnou = "";
                         for (j=1; j<16; j++) {
-                            var x = document.getElementById("c"+j+i).innerHTML;
-                            if (x != "") {
+                            var x = document.getElementById("c"+j+"_"+i).innerHTML;
+                            if (x != "" && x!= undefined) {
                                 cuvantnou = cuvantnou + x;
                                 var culoare = document.getElementById("c"+j+"_"+i).getAttribute("style");
                                 if (culoare == "")
                                     punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
-                                if (culoare == "background-color:#f4cecd") {
+                                if (culoare == "background-color:#f4cecd") { //roz
                                     punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
                                     multiplicator = multiplicator * 2;
                                 }
-                                if (culoare == "background-color:#66c9") {
+                                if (culoare == "background-color:#66c9") {  //albastru
                                     punctajpartial = punctajpartial + 3*punctaj[alfabet.indexOf(x)];
                                 }
-                                if (culoare == "background-color:#ee3940") {
+                                if (culoare == "background-color:#ee3940") { //rosu
                                     punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
                                     multiplicator = multiplicator * 3;
                                 }
-                                if (culoare == "background-color:#b8cc69") {
+                                if (culoare == "background-color:#b8cc69") { //verde
                                     punctajpartial = punctajpartial + 2*punctaj[alfabet.indexOf(x)];
                                 }               
                             }
-                            if (x == "" && cuvantnou != "" && cuvantnou.length > 1) {
+                            if ((x == "" || x== undefined) && cuvantnou != "" && cuvantnou.length > 1) {
                                 if (cuvintedepetabela.indexOf(cuvantnou) == -1) {
                                     var response;
                                     $.ajax({
@@ -323,8 +345,17 @@
                                         multiplicator = 1;
                                         punctajpartial = 0;
                                     }
-                                    else
+                                    else{
                                         ok = 0;
+                                        multiplicator = 1;
+                                        punctajpartial = 0;
+                                        cuvantnou = "";
+                                    };
+                                }
+                                else{  
+                                    multiplicator = 1;
+                                    punctajpartial = 0;
+                                    cuvantnou = "";
                                 }
                             }
                         }
@@ -340,21 +371,24 @@
                         for (i = 1; i < 16; i++)
                             for (j = 1; j < 16; j++) {
                                 if (arrayrestore[k] != undefined)
-                                    document.getElementById("c"+i+j).innerHTML = arrayrestore[k++];
+                                    document.getElementById("c"+i+"_"+j).innerHTML = arrayrestore[k++];
                                 else 
-                                    document.getElementById("c"+i+j).innerHTML = "";
+                                    document.getElementById("c"+i+"_"+j).innerHTML = "";
                                 console.log(arrayrestore[k-1]);
                         }
                         k = 0;
-                        for (i = 1; i < 8; i++)
-                            document.getElementById("lp"+playerturn+i).innerHTML = letters_restore[k++];
+                        for (i = 1; i < 8; i++) {
+                            document.getElementById("lp1"+i).innerHTML = lp1restore[i-1];
+                            document.getElementById("lp2"+i).innerHTML = lp2restore[i-1];
+                            console.log("ok");
+                        }
                         alert("Ai grija la ce introduci!");
                     }
                     else {
 
                         for (i = 1; i < 16; i++)
                             for (j = 1; j < 16; j++)
-                                    arrayrestore = arrayrestore.concat(document.getElementById("c"+i+j).innerHTML
+                                    arrayrestore = arrayrestore.concat(document.getElementById("c"+i+"_"+j).innerHTML);
                         cuvintedepetabela = cuvintedepetabela.concat(cuvinteadaugate);
                         if (playerturn == 1)
                             document.getElementById("punctaj_player1").innerHTML = punctaj_player1;
@@ -363,13 +397,16 @@
                         playerturn = 3 - playerturn;
                         randomlettersofdoom(3 - playerturn);
                         winningconditions();
-                        
+                        restore();
                     }
                 }
             </script>
         </div>    
         <br>
         <br>
+        <script>
+            restore();
+        </script>
         <center><form><input type="button" name="Verificare" value="Verificare" onclick="verify()"></form></center>
     </body>
 </html>
