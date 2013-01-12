@@ -256,7 +256,6 @@ function verify(){
 
 function giveup() {
     gamewon = 1;
-
     var pname1 = document.getElementById("player_unu").innerHTML;
     console.log(pname1);
     var pname2 = document.getElementById("player_doi").innerHTML;
@@ -264,4 +263,19 @@ function giveup() {
         alert(pname1 + " a renuntat!");
     else
         alert(pname2 + " a renuntat!");
+}
+
+function skip() {
+    var punctaj_player;
+    if (playerturn == 1) {
+        punctaj_player = parseInt(document.getElementById("punctaj_player1").innerHTML);
+        punctaj_player = punctaj_player - 10;
+        document.getElementById("punctaj_player1").innerHTML = punctaj_player;
+    }
+    else {
+        punctaj_player = parseInt(document.getElementById("punctaj_player2").innerHTML);
+        punctaj_player = punctaj_player - 10;
+        document.getElementById("punctaj_player2").innerHTML = punctaj_player;
+    }
+    playerturn = 3 - playerturn;
 }
