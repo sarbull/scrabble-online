@@ -299,10 +299,16 @@ function exista(word) {
 }
 
 function finishgamebutton() {
-    if (playerturn == 1)
+    var pname;
+    if (playerturn == 1) {
         p1finishgame = 1;
-    else
+        pname = document.getElementById("player_unu").innerHTML;
+    }
+    else {
         p2finishgame = 1;
+        pname = document.getElementById("player_doi").innerHTML;
+    }
+    alert(pname + " vrea sa incheie jocul!");
     playerturn = 3 - playerturn;
     winningconditions();
 }
