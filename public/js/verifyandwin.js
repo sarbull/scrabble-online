@@ -267,15 +267,8 @@ function giveup() {
 
 function skip() {
     var punctaj_player;
-    if (playerturn == 1) {
-        punctaj_player = parseInt(document.getElementById("punctaj_player1").innerHTML);
-        punctaj_player = punctaj_player - 10;
-        document.getElementById("punctaj_player1").innerHTML = punctaj_player;
-    }
-    else {
-        punctaj_player = parseInt(document.getElementById("punctaj_player2").innerHTML);
-        punctaj_player = punctaj_player - 10;
-        document.getElementById("punctaj_player2").innerHTML = punctaj_player;
-    }
+    punctaj_player = parseInt(document.getElementById("punctaj_player" + playerturn).innerHTML);
+    punctaj_player = punctaj_player - 10;
+    document.getElementById("punctaj_player" + playerturn).innerHTML = punctaj_player;
     playerturn = 3 - playerturn;
 }
