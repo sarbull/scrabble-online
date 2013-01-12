@@ -125,32 +125,21 @@ function verify(){
                     var response = exista(cuvantnou);
                     if (response != 0) {
                         cuvinteadaugate = cuvinteadaugate.concat(cuvantnou);
-                        cuvantnou = "";
                         if (playerturn == 1)
                             punctaj_player1 = punctaj_player1 + punctajpartial * multiplicator;
                         else
                             punctaj_player2 = punctaj_player2 + punctajpartial * multiplicator;
-                        multiplicator = 1;
-                        punctajpartial = 0;
                     } 
-                    else {
-                        ok = 0;
-                        multiplicator = 1;
-                        punctajpartial = 0;
-                        cuvantnou = "";
-                    }                
-                }
-                else{  
-                    multiplicator = 1;
-                    punctajpartial = 0;
-                    cuvantnou = "";
-                }
+                    else
+                        ok = 0;      
+                } 
+                multiplicator = 1;
+                punctajpartial = 0;
+                cuvantnou = "";
+                
             }
         }
     }
-
-    punctajpartial = 0;
-    multiplicator = 1;
 
     //verificare pe coloane
     for (i=1; i<16; i++) {
@@ -184,26 +173,17 @@ function verify(){
                     var response = exista(cuvantnou);
                     if (response != 0) {
                         cuvinteadaugate = cuvinteadaugate.concat(cuvantnou);
-                        cuvantnou = "";
                         if (playerturn == 1)
                             punctaj_player1 = punctaj_player1 + punctajpartial * multiplicator;
                         else
                             punctaj_player2 = punctaj_player2 + punctajpartial * multiplicator;
-                        multiplicator = 1;
-                        punctajpartial = 0;
                     } 
-                    else {
+                    else 
                         ok = 0;
-                        multiplicator = 1;
-                        punctajpartial = 0;
-                        cuvantnou = "";
-                    }
-                }
-                else{  
-                    multiplicator = 1;
-                    punctajpartial = 0;
-                    cuvantnou = "";
-                }
+                } 
+                multiplicator = 1;
+                punctajpartial = 0;
+                cuvantnou = "";
             }
         }
     }
@@ -235,7 +215,8 @@ function verify(){
             document.getElementById("lp2"+i).innerHTML = lp2restore[i-1];
             console.log("ok");
         }
-        alert("Introdu valori valide!");
+        if (firstturn != 1)
+            alert("Introdu valori valide!");
     }
     else {
         for (i = 1; i < 16; i++)
@@ -276,23 +257,16 @@ function skip() {
 
 function exista(word) {
     var cuvantulexista = 1;
-    var raspuns;
     jQuery.ajax({
         async: false, 
         url: "http://api.wordreference.com/0.8/ff175/json/roen/" + word,
         dataType: 'json',
         method: "GET",
         success: function(transport) {
-            console.log(transport);
-            console.log("Error:" + transport.Error);
-            console.log("URL:" + transport.Response);
             if (transport.Error || transport.Response)
                 cuvantulexista = 0;
-            //if (response.Error != undefined);
         }
 
     });
-
-    console.log("ok ==== " + cuvantulexista);
     return cuvantulexista;
 }
