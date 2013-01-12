@@ -4,6 +4,8 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <title>Scrabble Online</title>
       	<script src="js/functions.js" type="text/javascript"></script>
+      	<script src="js/draganddrop.js" type="text/javascript"></script>
+        <script src="js/fadeoutandlogin.js" type="text/javascript"></script>
       	<script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
       	<link href='http://fonts.googleapis.com/css?family=Elsie+Swash+Caps' rel='stylesheet' type='text/css'>
 
@@ -127,70 +129,8 @@
                 cursor:pointer;
             }
         </style>
-        <!-- Drag and drop -->
-        <script>
-            function allowDrop(ev){
-                ev.preventDefault();
-            }
-
-            function drag(ev){
-                ev.dataTransfer.setData("Text", ev.target.id);
-            }
-
-            function drop(ev){
-                ev.preventDefault();
-                var data = ev.dataTransfer.getData("Text");
-                ev.target.innerHTML = document.getElementById(data).innerHTML;
-                document.getElementById(data).innerHTML = "";
-            }
-        </script>
     </head>
     <body>
-        <script>
-
-        var fade_in_from = 0;
-var fade_out_from = 10;
-function fadeIn(element){
-    //console.log('Got: '+element);
-    var target = document.getElementById(element);
-    target.style.display = "block";
-    var newSetting = fade_in_from / 10;
-    target.style.opacity = newSetting;
-    // opacity ranges from 0 to 1
-    fade_in_from++;
-    if(fade_in_from == 10){
-        target.style.opacity = 1;
-        clearTimeout(loopTimer);
-        fade_in_from = 0;
-        return false;
-    }
-    var loopTimer = setTimeout('fadeIn(\''+element+'\')',50);
-}
-function fadeOut(element){
-    var target = document.getElementById(element);
-    var newSetting = fade_out_from / 10;
-    target.style.opacity = newSetting;
-    fade_out_from--;
-    if(fade_out_from == 0){
-        target.style.opacity = 0;
-        target.style.display = "none";
-        clearTimeout(loopTimer);
-        fade_out_from = 10;
-        return false;
-    }
-    var loopTimer = setTimeout('fadeOut(\''+element+'\')',50);
-}
-
-        function dologin(){
-            document.getElementById("player_unu").innerHTML = document.getElementById("iinput_one").value;
-            document.getElementById("player_doi").innerHTML = document.getElementById("iinput_doi").value;
-            if (document.getElementById("player_unu").innerHTML != undefined && document.getElementById("player_unu").innerHTML != "" && document.getElementById("player_doi").innerHTML != undefined && document.getElementById("player_doi").innerHTML != "") {
-                fadeOut("login");
-                setTimeout("fadeIn(\'others\')",500);
-            }
-        }
-
-        </script>
         <div id = "login" style="">
             <form>
                 <table>
