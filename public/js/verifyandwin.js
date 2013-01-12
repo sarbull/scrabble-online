@@ -117,16 +117,14 @@ function verify(){
                     punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
                     multiplicator = multiplicator * 2;
                 }
-                if (culoare == "background-color:#66c9e8") { //albastru
+                if (culoare == "background-color:#66c9e8") //albastru
                     punctajpartial = punctajpartial + 3*punctaj[alfabet.indexOf(x)];
-                }
                 if (culoare == "background-color:#ee3940") { //rosu
                     punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
                     multiplicator = multiplicator * 3;
                 }
-                if (culoare == "background-color:#b8cc69") { //verde
+                if (culoare == "background-color:#b8cc69") //verde
                     punctajpartial = punctajpartial + 2*punctaj[alfabet.indexOf(x)];
-                }               
             }
             if ((x == "" || x == undefined) && cuvantnou != "" && cuvantnou.length > 1) {
                 if (cuvintedepetabela.indexOf(cuvantnou) == -1) {
@@ -165,16 +163,14 @@ function verify(){
                     punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
                     multiplicator = multiplicator * 2;
                 }
-                if (culoare == "background-color:#66c9e8") {  //albastru
+                if (culoare == "background-color:#66c9e8") //albastru
                     punctajpartial = punctajpartial + 3*punctaj[alfabet.indexOf(x)];
-                }
                 if (culoare == "background-color:#ee3940") { //rosu
                     punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
                     multiplicator = multiplicator * 3;
                 }
-                if (culoare == "background-color:#b8cc69") { //verde
+                if (culoare == "background-color:#b8cc69") //verde
                     punctajpartial = punctajpartial + 2*punctaj[alfabet.indexOf(x)];
-                }               
             }
             if ((x == "" || x == undefined) && cuvantnou != "" && cuvantnou.length > 1) {
                 if (cuvintedepetabela.indexOf(cuvantnou) == -1) {
