@@ -122,7 +122,7 @@ function verify(){
             }
             if ((x == "" || x == undefined) && cuvantnou != "" && cuvantnou.length > 1) {
                 if (cuvintedepetabela.indexOf(cuvantnou) == -1) {
-                    var response = 1;
+                    var response = exista(cuvantnou);
                     if (response != 0) {
                         cuvinteadaugate = cuvinteadaugate.concat(cuvantnou);
                         cuvantnou = "";
@@ -181,7 +181,7 @@ function verify(){
             }
             if ((x == "" || x == undefined) && cuvantnou != "" && cuvantnou.length > 1) {
                 if (cuvintedepetabela.indexOf(cuvantnou) == -1) {
-                    var response = 1;
+                    var response = exista(cuvantnou);
                     if (response != 0) {
                         cuvinteadaugate = cuvinteadaugate.concat(cuvantnou);
                         cuvantnou = "";
@@ -254,6 +254,7 @@ function verify(){
     }
 }
 
+//functionalitatea butonului "Ma dau batut!"
 function giveup() {
     gamewon = 1;
     var pname1 = document.getElementById("player_unu").innerHTML;
@@ -271,4 +272,27 @@ function skip() {
     punctaj_player = punctaj_player - 10;
     document.getElementById("punctaj_player" + playerturn).innerHTML = punctaj_player;
     playerturn = 3 - playerturn;
+}
+
+function exista(word) {
+    var cuvantulexista = 1;
+    var raspuns;
+    jQuery.ajax({
+        async: false, 
+        url: "http://api.wordreference.com/0.8/ff175/json/roen/" + word,
+        dataType: 'json',
+        method: "GET",
+        success: function(transport) {
+            console.log(transport);
+            console.log("Error:" + transport.Error);
+            console.log("URL:" + transport.Response);
+            if (transport.Error || transport.Response)
+                cuvantulexista = 0;
+            //if (response.Error != undefined);
+        }
+
+    });
+
+    console.log("ok ==== " + cuvantulexista);
+    return cuvantulexista;
 }
