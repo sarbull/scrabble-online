@@ -10,13 +10,11 @@ function restorify(){
                 document.getElementById("c"+i+"_"+j).innerHTML = arrayrestore[k++];
             else 
                 document.getElementById("c"+i+"_"+j).innerHTML = "";
-            console.log(arrayrestore[k-1]);
         }
     k = 0;
     for (i = 1; i < 8; i++) {
         document.getElementById("lp1"+i).innerHTML = lp1restore[i-1];
         document.getElementById("lp2"+i).innerHTML = lp2restore[i-1];
-        console.log("ok");
     }
 }
 
@@ -25,7 +23,6 @@ function winningconditions(){
         alert("Jocul s-a incheiat deja!");
     else{
         var pname1 = document.getElementById("player_unu").innerHTML;
-        console.log(pname1);
         var pname2 = document.getElementById("player_doi").innerHTML;
         var puc1 = document.getElementById("punctaj_player1").innerHTML;
         var puc2 = document.getElementById("punctaj_player2").innerHTML;
@@ -82,7 +79,6 @@ function restore() {
     for (var i = 1; i < 16; i++)
         for (var j = 1; j < 16; j++)
             arrayrestore = arrayrestore.concat(document.getElementById("c"+i+"_"+j).innerHTML);
-    console.log(arrayrestore);
     for (var i = 1; i < 8; i++) {
         lp1restore = lp1restore.concat(document.getElementById("lp1"+i).innerHTML);
         lp2restore = lp2restore.concat(document.getElementById("lp2"+i).innerHTML);
@@ -216,13 +212,11 @@ function verify(){
                     document.getElementById("c"+i+"_"+j).innerHTML = arrayrestore[k++];
                 else 
                     document.getElementById("c"+i+"_"+j).innerHTML = "";
-                console.log(arrayrestore[k-1]);
             }
         k = 0;
         for (i = 1; i < 8; i++) {
             document.getElementById("lp1"+i).innerHTML = lp1restore[i-1];
             document.getElementById("lp2"+i).innerHTML = lp2restore[i-1];
-            console.log("ok");
         }
         if (firstturn != 1)
             alert("Introdu valori valide!");
@@ -248,7 +242,6 @@ function verify(){
 function giveup() {
     gamewon = 1;
     var pname1 = document.getElementById("player_unu").innerHTML;
-    console.log(pname1);
     var pname2 = document.getElementById("player_doi").innerHTML;
     if (playerturn == 1)
         alert(pname1 + " a renuntat!");
@@ -324,8 +317,6 @@ function checksingleword() {
     }
     var i;
     var ok = 2;
-    alert(coordsx);
-    alert(coordsy);
     for (i = 1; i < coordsx.length; i++)
         if (coordsx[i] != coordsx[i-1])
             if (ok == 2)
