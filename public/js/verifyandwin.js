@@ -61,6 +61,14 @@ function winningconditions(){
                 else
                     alert("Egalitate!");
             }
+            else if (p1finishgame == 1 && p2finishgame == 1) {
+                if (puc2 > puc1)
+                    alert(pname2 + " a castigat!");
+                else if (puc1 > puc2)
+                    alert(pname1 + "a castigat!");
+                else
+                    alert("Egalitate!");
+            }
         }
     }
 }
@@ -188,7 +196,7 @@ function verify(){
         }
     }
 
-    if (cuvinteadaugate.length == 0)
+    if (cuvinteadaugate.length == 0 || checkadjacency() == 0)
         ok = 0;
 
     if (firstturn == 1 && (document.getElementById("c8_8").innerHTML == undefined
@@ -269,4 +277,40 @@ function exista(word) {
 
     });
     return cuvantulexista;
+}
+
+function finishgamebutton() {
+    if (playerturn == 1)
+        p1finishgame = 1;
+    else
+        p2finishgame = 1;
+    playerturn = 3 - playerturn;
+    winningconditions();
+}
+
+function checkadjacency() {
+    for (var i=1; i<16; i++) {
+        for (var j=1; j<16; j++) {
+            var x = document.getElementById("c"+i+"_"+j).innerHTML;
+            if (x != "") {
+                var ok = 0;
+                var y;
+                if (i != 1)
+                    if(document.getElementById("c" + (i-1) + "_" + j).innerHTML != "")
+                        ok = 1;
+                if (i != 15)
+                    if(document.getElementById("c" + (i+1) + "_" + j).innerHTML != "")
+                        ok = 1;
+                if (j != 1)
+                    if(document.getElementById("c" + i + "_" + (j-1)).innerHTML != "")
+                        ok = 1;
+                if (j != 15)
+                    if(document.getElementById("c" + i + "_" + (j+1)).innerHTML != "")
+                        ok = 1;
+                if (ok == 0)
+                    return 0;
+            }
+        }
+    }
+    return 1;
 }

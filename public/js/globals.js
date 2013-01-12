@@ -19,4 +19,6 @@ var gamewon = 0;
 var firstturn = 1;
 var arrayrestore = [];
 var lp1restore = [];
- var lp2restore = [];
+var lp2restore = [];
+var p1finishgame = 0;
+var p2finishgame = 0;
