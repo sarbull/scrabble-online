@@ -61,10 +61,11 @@ function winningconditions(){
                     alert("Egalitate!");
             }
             else if (p1finishgame == 1 && p2finishgame == 1) {
+                gamewon = 1;
                 if (puc2 > puc1)
                     alert(pname2 + " a castigat!");
                 else if (puc1 > puc2)
-                    alert(pname1 + "a castigat!");
+                    alert(pname1 + " a castigat!");
                 else
                     alert("Egalitate!");
             }
@@ -98,189 +99,165 @@ function verify(){
     var multiplicator = 1;
     var cuvinteadaugate = [];
 
-    
+    if (gamewon == 1)
+        alert("Jocul a fost castigat deja!");
 
-    //verificare pe linii
-    for (i=1; i<16; i++) {
-        punctajpartial = 0;
-        multiplicator = 1;
-        var cuvantnou = "";
-        for (j=1; j<16; j++) {
-            var x = document.getElementById("c"+i+"_"+j).innerHTML;
-            if (x != "") {
-                cuvantnou = cuvantnou + x;
-                var culoare = document.getElementById("c"+i+"_"+j).getAttribute("style");
-                if (culoare == "background-image:url(images/lighter.png)"
-                    || culoare == "background-image:url(images/darker.png)")
-                    punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
-                if (culoare == "background-color:#f4cecd") { //roz
-                    punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
-                    multiplicator = multiplicator * 2;
-                }
-                if (culoare == "background-color:#66c9e8") //albastru
-                    punctajpartial = punctajpartial + 3 * punctaj[alfabet.indexOf(x)];
-                if (culoare == "background-color:#ee3940") { //rosu
-                    punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
-                    multiplicator = multiplicator * 3;
-                }
-                if (culoare == "background-color:#b8cc69") //verde
-                    punctajpartial = punctajpartial + 2*punctaj[alfabet.indexOf(x)];
-            }
-            if (x == "" && cuvantnou.length > 0) {
-                if (cuvintedepetabela.indexOf(cuvantnou) == -1 && cuvantnou.length > 1) {
-                    var response = exista(cuvantnou);
-                    if (response != 0) {
-                        cuvinteadaugate = cuvinteadaugate.concat(cuvantnou);
-                        if (playerturn == 1)
-                            punctaj_player1 = punctaj_player1 + punctajpartial * multiplicator;
-                        else
-                            punctaj_player2 = punctaj_player2 + punctajpartial * multiplicator;
-                    } 
-                    else {
-                        ok = 0;   
-                        alert("RESPONSE");
-                    }   
-                } 
-                multiplicator = 1;
-                punctajpartial = 0;
-                cuvantnou = "";
-            }
-        }
-        if (cuvantnou.length > 1)
-            if(cuvintedepetabela.indexOf(cuvantnou) == -1) {
-                var response = exista(cuvantnou);
-                if (response != 0) {
-                    cuvinteadaugate = cuvinteadaugate.concat(cuvantnou);
-                    if (playerturn == 1)
-                        punctaj_player1 = punctaj_player1 + punctajpartial * multiplicator;
-                    else
-                        punctaj_player2 = punctaj_player2 + punctajpartial * multiplicator;
-                } 
-                else {
-                    ok = 0;   
-                    alert("RESPONSE");
-                }  
-            }
-    }
-
-    //verificare pe coloane
-    for (i=1; i<16; i++) {
-        punctajpartial = 0;
-        multiplicator = 1;
-        var cuvantnou = "";
-        for (j=1; j<16; j++) {
-            var x = document.getElementById("c"+j+"_"+i).innerHTML;
-            if (x != "") {
-                cuvantnou = cuvantnou + x;
-                var culoare = document.getElementById("c"+j+"_"+i).getAttribute("style");
-                if (culoare == "background-image:url(images/lighter.png)" || culoare == "background-image:url(images/darker.png)")
-                    punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
-                if (culoare == "background-color:#f4cecd") { //roz
-                    punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
-                    multiplicator = multiplicator * 2;
-                }
-                if (culoare == "background-color:#66c9e8") //albastru
-                    punctajpartial = punctajpartial + 3 * punctaj[alfabet.indexOf(x)];
-                if (culoare == "background-color:#ee3940") { //rosu
-                    punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
-                    multiplicator = multiplicator * 3;
-                }
-                if (culoare == "background-color:#b8cc69") //verde
-                    punctajpartial = punctajpartial + 2 * punctaj[alfabet.indexOf(x)];
-            }
-            if (x == "" && cuvantnou.length > 0) {
-                if (cuvintedepetabela.indexOf(cuvantnou) == -1 && cuvantnou.length > 1) {
-                    var response = exista(cuvantnou);
-                    if (response != 0) {
-                        cuvinteadaugate = cuvinteadaugate.concat(cuvantnou);
-                        if (playerturn == 1)
-                            punctaj_player1 = punctaj_player1 + punctajpartial * multiplicator;
-                        else
-                            punctaj_player2 = punctaj_player2 + punctajpartial * multiplicator;
-                    } 
-                    else{
-                        ok = 0;
-                        alert("RESPONSE");
-                    }
-                }
-                multiplicator = 1;
-                punctajpartial = 0;
-                cuvantnou = "";
-            }
-        }
-        if (cuvantnou.length > 1)
-            if(cuvintedepetabela.indexOf(cuvantnou) == -1) {
-                var response = exista(cuvantnou);
-                if (response != 0) {
-                    cuvinteadaugate = cuvinteadaugate.concat(cuvantnou);
-                    if (playerturn == 1)
-                        punctaj_player1 = punctaj_player1 + punctajpartial * multiplicator;
-                    else
-                        punctaj_player2 = punctaj_player2 + punctajpartial * multiplicator;
-                } 
-                else {
-                    ok = 0;   
-                    alert("RESPONSE");
-                }  
-            }
-    }
-
-    if (ok != 0) {
-        if (cuvinteadaugate.length == 0) {
-            ok = 0;
-            alert("AICI");
-        }
-        if(checkadjacency() == 0) {
-            ok = 0;
-            alert("AICI2");
-        }
-        if(checksingleword() == 0) {
-            ok =0;
-            alert("AICI3");
-        }
-    }
-
-    if (firstturn == 1 && (document.getElementById("c8_8").innerHTML == undefined
-        || document.getElementById("c8_8").innerHTML == "")){
-        ok = 0;
-        alert("Primul cuvant trebuie sa treaca prin centru!");
-    }
-    
-    if (ok == 0) { //revenim la starea initiala
-        coordsx = [];
-        coordsy = [];
-        var i;
-        var j;
-        var k = 0;
-        for (i = 1; i < 16; i++)
-            for (j = 1; j < 16; j++) {
-                if (arrayrestore[k] != undefined)
-                    document.getElementById("c"+i+"_"+j).innerHTML = arrayrestore[k++];
-                else 
-                    document.getElementById("c"+i+"_"+j).innerHTML = "";
-            }
-        k = 0;
-        for (i = 1; i < 8; i++) {
-            document.getElementById("lp1"+i).innerHTML = lp1restore[i-1];
-            document.getElementById("lp2"+i).innerHTML = lp2restore[i-1];
-        }
-        if (firstturn != 1)
-            alert("Introdu valori valide!");
-    }
     else {
-        for (i = 1; i < 16; i++)
-            for (j = 1; j < 16; j++)
-                arrayrestore = arrayrestore.concat(document.getElementById("c"+i+"_"+j).innerHTML);
-        cuvintedepetabela = cuvintedepetabela.concat(cuvinteadaugate);
-        if (playerturn == 1)
-            document.getElementById("punctaj_player1").innerHTML = punctaj_player1;
-        else
-            document.getElementById("punctaj_player2").innerHTML = punctaj_player2;
-        playerturn = 3 - playerturn;
-        firstturn = 0;
-        randomlettersofdoom(3 - playerturn);
-        winningconditions();
-        restore();
+
+        //verificare pe linii
+        for (i=1; i<16; i++) {
+            punctajpartial = 0;
+            multiplicator = 1;
+            var cuvantnou = "";
+            for (j=1; j<16; j++) {
+                var x = document.getElementById("c"+i+"_"+j).innerHTML;
+                if (x != "") {
+                    cuvantnou = cuvantnou + x;
+                    var culoare = document.getElementById("c"+i+"_"+j).getAttribute("style");
+                    if (culoare == "background-image:url(images/lighter.png)"
+                        || culoare == "background-image:url(images/darker.png)")
+                        punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
+                    if (culoare == "background-color:#f4cecd") { //roz
+                        punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
+                        multiplicator = multiplicator * 2;
+                    }
+                    if (culoare == "background-color:#66c9e8") //albastru
+                        punctajpartial = punctajpartial + 3 * punctaj[alfabet.indexOf(x)];
+                    if (culoare == "background-color:#ee3940") { //rosu
+                        punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
+                        multiplicator = multiplicator * 3;
+                    }
+                    if (culoare == "background-color:#b8cc69") //verde
+                        punctajpartial = punctajpartial + 2*punctaj[alfabet.indexOf(x)];
+                }
+                if (x == "" && cuvantnou.length > 0) {
+                    if (cuvintedepetabela.indexOf(cuvantnou) == -1 && cuvantnou.length > 1) {
+                        calculatepoints();  
+                    } 
+                    multiplicator = 1;
+                    punctajpartial = 0;
+                    cuvantnou = "";
+                }
+            }
+            if (cuvantnou.length > 1)
+                if(cuvintedepetabela.indexOf(cuvantnou) == -1) {
+                    calculatepoints();  
+                }
+        }
+
+        //verificare pe coloane
+        for (i=1; i<16; i++) {
+            punctajpartial = 0;
+            multiplicator = 1;
+            var cuvantnou = "";
+            for (j=1; j<16; j++) {
+                var x = document.getElementById("c"+j+"_"+i).innerHTML;
+                if (x != "") {
+                    cuvantnou = cuvantnou + x;
+                    var culoare = document.getElementById("c"+j+"_"+i).getAttribute("style");
+                    if (culoare == "background-image:url(images/lighter.png)"
+                        || culoare == "background-image:url(images/darker.png)")
+                        punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
+                    if (culoare == "background-color:#f4cecd") { //roz
+                        punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
+                        multiplicator = multiplicator * 2;
+                    }
+                    if (culoare == "background-color:#66c9e8") //albastru
+                        punctajpartial = punctajpartial + 3 * punctaj[alfabet.indexOf(x)];
+                    if (culoare == "background-color:#ee3940") { //rosu
+                        punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
+                        multiplicator = multiplicator * 3;
+                    }
+                    if (culoare == "background-color:#b8cc69") //verde
+                        punctajpartial = punctajpartial + 2 * punctaj[alfabet.indexOf(x)];
+                }
+                if (x == "" && cuvantnou.length > 0) {
+                    if (cuvintedepetabela.indexOf(cuvantnou) == -1 && cuvantnou.length > 1) {
+                        calculatepoints();
+                    }
+                    multiplicator = 1;
+                    punctajpartial = 0;
+                    cuvantnou = "";
+                }
+            }
+            if (cuvantnou.length > 1)
+                if(cuvintedepetabela.indexOf(cuvantnou) == -1) {
+                    calculatepoints();
+                }
+        }
+
+        function calculatepoints() {
+            var response = exista(cuvantnou);
+            if (response != 0) {
+                cuvinteadaugate = cuvinteadaugate.concat(cuvantnou);
+                if (playerturn == 1)
+                    punctaj_player1 = punctaj_player1 + punctajpartial * multiplicator;
+                else
+                    punctaj_player2 = punctaj_player2 + punctajpartial * multiplicator;
+            } 
+            else{
+                ok = 0;
+                alert("RESPONSE");
+            }
+        }
+
+        if (ok != 0) {
+            if (cuvinteadaugate.length == 0) {
+                ok = 0;
+                alert("AICI");
+            }
+            if(checkadjacency() == 0) {
+                ok = 0;
+                alert("AICI2");
+            }
+            if(checksingleword() == 0) {
+                ok =0;
+                alert("AICI3");
+            }
+        }
+
+        if (firstturn == 1 && (document.getElementById("c8_8").innerHTML == undefined
+            || document.getElementById("c8_8").innerHTML == "")){
+            ok = 0;
+            alert("Primul cuvant trebuie sa treaca prin centru!");
+        }
+    
+        if (ok == 0) { //revenim la starea initiala
+            coordsx = [];
+            coordsy = [];
+            var i;
+            var j;
+            var k = 0;
+            for (i = 1; i < 16; i++)
+                for (j = 1; j < 16; j++) {
+                    if (arrayrestore[k] != undefined)
+                        document.getElementById("c"+i+"_"+j).innerHTML = arrayrestore[k++];
+                    else 
+                        document.getElementById("c"+i+"_"+j).innerHTML = "";
+                }
+            k = 0;
+            for (i = 1; i < 8; i++) {
+                document.getElementById("lp1"+i).innerHTML = lp1restore[i-1];
+                document.getElementById("lp2"+i).innerHTML = lp2restore[i-1];
+            }
+            if (firstturn != 1)
+                alert("Introdu valori valide!");
+        }
+        else {
+            for (i = 1; i < 16; i++)
+                for (j = 1; j < 16; j++)
+                    arrayrestore = arrayrestore.concat(document.getElementById("c"+i+"_"+j).innerHTML);
+            cuvintedepetabela = cuvintedepetabela.concat(cuvinteadaugate);
+            if (playerturn == 1)
+                document.getElementById("punctaj_player1").innerHTML = punctaj_player1;
+            else
+                document.getElementById("punctaj_player2").innerHTML = punctaj_player2;
+            playerturn = 3 - playerturn;
+            firstturn = 0;
+            randomlettersofdoom(3 - playerturn);
+            winningconditions();
+            restore();
+        }
     }
 }
 
