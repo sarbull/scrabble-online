@@ -8,7 +8,9 @@ function drag(ev){
 
 function drop(ev){
 	ev.preventDefault();
-        var data = ev.dataTransfer.getData("Text");
-        ev.target.innerHTML = document.getElementById(data).innerHTML;
-        document.getElementById(data).innerHTML = "";
+    var data = ev.dataTransfer.getData("Text");
+    if (ev.target.innerHTML == "") {
+    	ev.target.innerHTML = document.getElementById(data).innerHTML;
+    	document.getElementById(data).innerHTML = "";
+    }
 }
