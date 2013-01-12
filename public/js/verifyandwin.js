@@ -1,4 +1,6 @@
 function restorify(){
+    coordsx = [];
+    coordsy = [];
     var i;
     var j;
     var k = 0;
@@ -100,6 +102,9 @@ function verify(){
     var multiplicator = 1;
     var cuvinteadaugate = [];
 
+    var coordsx = [];
+    var coordsy = [];
+
     //verificare pe linii
     for (i=1; i<16; i++) {
         punctajpartial = 0;
@@ -192,7 +197,7 @@ function verify(){
         }
     }
 
-    if (cuvinteadaugate.length == 0 || checkadjacency() == 0)
+    if (cuvinteadaugate.length == 0 || checkadjacency() == 0 || checksingleword() == 0)
         ok = 0;
 
     if (firstturn == 1 && (document.getElementById("c8_8").innerHTML == undefined
@@ -309,4 +314,32 @@ function checkadjacency() {
         }
     }
     return 1;
+}
+
+function checksingleword() {
+    if (coordsx.length == 0 || coordsy. length == 0) {  
+        coordsx = [];
+        coordsy = [];
+        return 0;
+    }
+    var i;
+    var ok = 2;
+    alert(coordsx);
+    alert(coordsy);
+    for (i = 1; i < coordsx.length; i++)
+        if (coordsx[i] != coordsx[i-1])
+            if (ok == 2)
+                ok = 1;
+    for (i = 1; i < coordsy.length; i++)
+        if (coordsy[i] != coordsy[i-1])
+            if (ok == 1)
+                ok = 0;
+    if (ok != 0) {
+        coordsx = [];
+        coordsy = [];
+        return 1;
+    }
+    coordsx = [];
+    coordsy = [];
+    return 0;
 }
