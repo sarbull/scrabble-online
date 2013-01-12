@@ -98,8 +98,7 @@ function verify(){
     var multiplicator = 1;
     var cuvinteadaugate = [];
 
-    var coordsx = [];
-    var coordsy = [];
+    
 
     //verificare pe linii
     for (i=1; i<16; i++) {
@@ -108,7 +107,7 @@ function verify(){
         var cuvantnou = "";
         for (j=1; j<16; j++) {
             var x = document.getElementById("c"+i+"_"+j).innerHTML;
-            if (x != "" && x!= undefined) {
+            if (x != "") {
                 cuvantnou = cuvantnou + x;
                 var culoare = document.getElementById("c"+i+"_"+j).getAttribute("style");
                 if (culoare == "background-image:url(images/lighter.png)"
@@ -119,7 +118,7 @@ function verify(){
                     multiplicator = multiplicator * 2;
                 }
                 if (culoare == "background-color:#66c9e8") //albastru
-                    punctajpartial = punctajpartial + 3*punctaj[alfabet.indexOf(x)];
+                    punctajpartial = punctajpartial + 3 * punctaj[alfabet.indexOf(x)];
                 if (culoare == "background-color:#ee3940") { //rosu
                     punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
                     multiplicator = multiplicator * 3;
@@ -127,8 +126,8 @@ function verify(){
                 if (culoare == "background-color:#b8cc69") //verde
                     punctajpartial = punctajpartial + 2*punctaj[alfabet.indexOf(x)];
             }
-            if ((x == "" || x == undefined) && cuvantnou != "" && cuvantnou.length > 1) {
-                if (cuvintedepetabela.indexOf(cuvantnou) == -1) {
+            if (x == "" && cuvantnou.length > 0) {
+                if (cuvintedepetabela.indexOf(cuvantnou) == -1 && cuvantnou.length > 1) {
                     var response = exista(cuvantnou);
                     if (response != 0) {
                         cuvinteadaugate = cuvinteadaugate.concat(cuvantnou);
@@ -137,15 +136,31 @@ function verify(){
                         else
                             punctaj_player2 = punctaj_player2 + punctajpartial * multiplicator;
                     } 
-                    else
-                        ok = 0;      
+                    else {
+                        ok = 0;   
+                        alert("RESPONSE");
+                    }   
                 } 
                 multiplicator = 1;
                 punctajpartial = 0;
                 cuvantnou = "";
-                
             }
         }
+        if (cuvantnou.length > 1)
+            if(cuvintedepetabela.indexOf(cuvantnou) == -1) {
+                var response = exista(cuvantnou);
+                if (response != 0) {
+                    cuvinteadaugate = cuvinteadaugate.concat(cuvantnou);
+                    if (playerturn == 1)
+                        punctaj_player1 = punctaj_player1 + punctajpartial * multiplicator;
+                    else
+                        punctaj_player2 = punctaj_player2 + punctajpartial * multiplicator;
+                } 
+                else {
+                    ok = 0;   
+                    alert("RESPONSE");
+                }  
+            }
     }
 
     //verificare pe coloane
@@ -155,7 +170,7 @@ function verify(){
         var cuvantnou = "";
         for (j=1; j<16; j++) {
             var x = document.getElementById("c"+j+"_"+i).innerHTML;
-            if (x != "" && x!= undefined) {
+            if (x != "") {
                 cuvantnou = cuvantnou + x;
                 var culoare = document.getElementById("c"+j+"_"+i).getAttribute("style");
                 if (culoare == "background-image:url(images/lighter.png)" || culoare == "background-image:url(images/darker.png)")
@@ -165,16 +180,16 @@ function verify(){
                     multiplicator = multiplicator * 2;
                 }
                 if (culoare == "background-color:#66c9e8") //albastru
-                    punctajpartial = punctajpartial + 3*punctaj[alfabet.indexOf(x)];
+                    punctajpartial = punctajpartial + 3 * punctaj[alfabet.indexOf(x)];
                 if (culoare == "background-color:#ee3940") { //rosu
                     punctajpartial = punctajpartial + punctaj[alfabet.indexOf(x)];
                     multiplicator = multiplicator * 3;
                 }
                 if (culoare == "background-color:#b8cc69") //verde
-                    punctajpartial = punctajpartial + 2*punctaj[alfabet.indexOf(x)];
+                    punctajpartial = punctajpartial + 2 * punctaj[alfabet.indexOf(x)];
             }
-            if ((x == "" || x == undefined) && cuvantnou != "" && cuvantnou.length > 1) {
-                if (cuvintedepetabela.indexOf(cuvantnou) == -1) {
+            if (x == "" && cuvantnou.length > 0) {
+                if (cuvintedepetabela.indexOf(cuvantnou) == -1 && cuvantnou.length > 1) {
                     var response = exista(cuvantnou);
                     if (response != 0) {
                         cuvinteadaugate = cuvinteadaugate.concat(cuvantnou);
@@ -183,18 +198,47 @@ function verify(){
                         else
                             punctaj_player2 = punctaj_player2 + punctajpartial * multiplicator;
                     } 
-                    else 
+                    else{
                         ok = 0;
-                } 
+                        alert("RESPONSE");
+                    }
+                }
                 multiplicator = 1;
                 punctajpartial = 0;
                 cuvantnou = "";
             }
         }
+        if (cuvantnou.length > 1)
+            if(cuvintedepetabela.indexOf(cuvantnou) == -1) {
+                var response = exista(cuvantnou);
+                if (response != 0) {
+                    cuvinteadaugate = cuvinteadaugate.concat(cuvantnou);
+                    if (playerturn == 1)
+                        punctaj_player1 = punctaj_player1 + punctajpartial * multiplicator;
+                    else
+                        punctaj_player2 = punctaj_player2 + punctajpartial * multiplicator;
+                } 
+                else {
+                    ok = 0;   
+                    alert("RESPONSE");
+                }  
+            }
     }
 
-    if (cuvinteadaugate.length == 0 || checkadjacency() == 0 || checksingleword() == 0)
-        ok = 0;
+    if (ok != 0) {
+        if (cuvinteadaugate.length == 0) {
+            ok = 0;
+            alert("AICI");
+        }
+        if(checkadjacency() == 0) {
+            ok = 0;
+            alert("AICI2");
+        }
+        if(checksingleword() == 0) {
+            ok =0;
+            alert("AICI3");
+        }
+    }
 
     if (firstturn == 1 && (document.getElementById("c8_8").innerHTML == undefined
         || document.getElementById("c8_8").innerHTML == "")){
@@ -203,6 +247,8 @@ function verify(){
     }
     
     if (ok == 0) { //revenim la starea initiala
+        coordsx = [];
+        coordsy = [];
         var i;
         var j;
         var k = 0;
@@ -255,9 +301,11 @@ function skip() {
     punctaj_player = punctaj_player - 10;
     document.getElementById("punctaj_player" + playerturn).innerHTML = punctaj_player;
     playerturn = 3 - playerturn;
+    restorify();
 }
 
 function exista(word) {
+    alert(word);
     var cuvantulexista = 1;
     jQuery.ajax({
         async: false, 
@@ -310,11 +358,12 @@ function checkadjacency() {
 }
 
 function checksingleword() {
-    if (coordsx.length == 0 || coordsy. length == 0) {  
+    if (coordsx.length == 0 || coordsy.length == 0) {  
         coordsx = [];
         coordsy = [];
         return 0;
     }
+    alert("Coordonate: " + coordsx + "    " + coordsy);
     var i;
     var ok = 2;
     for (i = 1; i < coordsx.length; i++)
