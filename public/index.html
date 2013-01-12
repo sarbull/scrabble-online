@@ -3,9 +3,11 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <title>Scrabble Online</title>
+        <script src="js/globals.js" type="text/javascript"></script>
       	<script src="js/functions.js" type="text/javascript"></script>
       	<script src="js/draganddrop.js" type="text/javascript"></script>
         <script src="js/fadeoutandlogin.js" type="text/javascript"></script>
+        <script src="js/letterrandomizer.js" type="text/javascript"></script>
       	<script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
       	<link href='http://fonts.googleapis.com/css?family=Elsie+Swash+Caps' rel='stylesheet' type='text/css'>
 
@@ -151,33 +153,7 @@
                 
         <div id = "others"> 
     	<div align="center"> <img id="monlogo" src="images/logo.png"> </div>
-        <script>
-            
-            Array.prototype.remove = function(from, to) {
-                var rest = this.slice((to || from) + 1 || this.length);
-                this.length = from < 0 ? this.length + from : from;
-                return this.push.apply(this, rest);
-            };
-
-            var saculetculitere = ["A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B",
-                                    "C", "C", "C", "C", "C", "D", "D", "D", "D", "E", "E", "E", "E",
-                                    "E", "E", "E", "E", "E", "F", "F", "G", "G", "H", "I", "I", "I",
-                                    "I", "I", "I", "I", "I", "I", "I", "J", "L", "L", "L", "L", "M",
-                                    "M", "M", "N", "N", "N", "N", "N", "N", "O", "O", "O", "O", "O",
-                                    "P", "P", "P", "P", "R", "R", "R", "R", "R", "R", "R", "S", "S",
-                                    "S", "S", "S", "T", "T", "T", "T", "T", "T", "T", "U", "U", "U",
-                                    "U", "U", "U", "V", "V", "X", "Z"];
-            var litereramaseinsac = 98;
-            var playerturn = 1;
-            var cuvintedepetabela = [];
-            var gamewon = 0;
-            var firstturn = 1;
-
-            var arrayrestore = [];
-            var lp1restore = [];
-            var lp2restore = [];
-        </script>
-
+        
 	    <div id="wrap" style="">
 		    <div id="player1">
 		    	<h3 id="player_unu">Player 1</h3>
@@ -232,24 +208,7 @@
 		    <br style="clear:both;">
    		</div>
         <script>
-            function randomlettersofdoom(player){ //functie pentru adaugare de litere random pe placuta cu litere a jucatorilor; player poate fi 1 sau 2
-                if (litereramaseinsac != 0) {
-                    var i;
-                    for (i = 1; i < 8; i++) {
-                        if (litereramaseinsac == 0)
-                            break;
-                        var rand = Math.floor(Math.random()*litereramaseinsac);
-                        console.log(rand);
-                        if (document.getElementById("lp"+player+i).innerHTML == "") {
-                            var rand = Math.floor(Math.random()*litereramaseinsac);
-                            console.log(rand);
-                            document.getElementById("lp"+player+i).innerHTML = saculetculitere[rand];
-                            saculetculitere.remove(rand,rand);
-                            litereramaseinsac = litereramaseinsac - 1;
-                        }
-                    }
-                }
-            }
+            
         </script>
         <script>
             randomlettersofdoom(1);
