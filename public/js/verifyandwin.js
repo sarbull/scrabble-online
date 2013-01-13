@@ -252,6 +252,10 @@ function verify(){
                 document.getElementById("punctaj_player1").innerHTML = punctaj_player1;
             else
                 document.getElementById("punctaj_player2").innerHTML = punctaj_player2;
+            for (var c = 1; c <= 7; c++) {
+                document.getElementById("lp" + playerturn + c).setAttribute("draggable", "false");
+                document.getElementById("lp" + (3 - playerturn) + c).setAttribute("draggable", "true");
+            }
             playerturn = 3 - playerturn;
             firstturn = 0;
             randomlettersofdoom(3 - playerturn);
