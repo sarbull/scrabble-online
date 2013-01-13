@@ -1,7 +1,10 @@
+//functia de colorare a tabelei
+
 function do_colors(){
 
 	var random_number = Math.floor(Math.random()*2);
 
+	//daca patratica nu trebuie colorata
 	if(random_number == 1)
 		style="background-image:url(images/darker.png)";
 	else

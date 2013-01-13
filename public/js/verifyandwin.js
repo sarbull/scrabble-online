@@ -300,16 +300,6 @@ function exista(word) {
     });
     return cuvantulexista;
 }
-/*function exista(word) {
-    alert(word);
-    var cuvantulexista = 1;
-    var url = "http://api.wordreference.com/0.8/ff175/json/roen/" + word + "?callback=?";
-    alert(url);
-    $.getJSON(url, function (data) {
-        alert(data);
-    });
-    return cuvantulexista;
-}*/
 
 function finishgamebutton() {
     var pname;

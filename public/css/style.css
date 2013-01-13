@@ -1,6 +1,6 @@
 body {
 	background-color: #ffffff;
-    background-image:url(images/bg.jpg);
+    background-image:url(../images/bg.jpg);
     background-repeat: repeat;
 	font-family: Tahoma, Arial;
 	font-size:15px;
@@ -20,7 +20,7 @@ body {
 
 .litera {
     font-family: 'Elsie Swash Caps', cursive;
-    background-image:url(images/darker.png);
+    background-image:url(../images/darker.png);
     background-position: center center;
     padding-top:3px;
     font-size:20px;
