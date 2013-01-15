@@ -5,10 +5,8 @@ function randomlettersofdoom(player){ //functie pentru adaugare de litere random
             if (litereramaseinsac == 0)
                 break;
             var rand = Math.floor(Math.random()*litereramaseinsac);
-            console.log(rand);
             if (document.getElementById("lp"+player+i).innerHTML == "") {
                 var rand = Math.floor(Math.random()*litereramaseinsac);
-                console.log(rand);
                 document.getElementById("lp"+player+i).innerHTML = saculetculitere[rand];
                 saculetculitere.remove(rand,rand);
                 litereramaseinsac = litereramaseinsac - 1;

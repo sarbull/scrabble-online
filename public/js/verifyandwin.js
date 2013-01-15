@@ -292,15 +292,18 @@ function skip() {
 function exista(word) {
 
     alert(word);
-    var proxy = 'ba-simple-proxy.php';
+    var proxy = 'js/ba-simple-proxy.php?url=';
+    var uri = "http://api.wordreference.com/0.8/ff175/json/roen/" + word;
+    uri = encodeURIComponent(uri);
+    alert(proxy + uri);
     var cuvantulexista = 1;
     jQuery.ajax({
         "async": false,
-        "url": proxy + "?url=" + "http://api.wordreference.com/0.8/ff175/json/roen/" + word,
+        "url": proxy + uri,
         "dataType": 'json',
         "method": "GET",
         "success": function (data) {
-            console.log(data);
+            alert("HERE!");
             if (data.Error || data.Response)
                 cuvantulexista = 0;
         }
