@@ -293,7 +293,7 @@ function exista(word) {
         "url": "http://api.wordreference.com/0.8/ff175/json/roen/" + word,
         "dataType": 'json',
         "method": "GET",
-        "success": function (dataR) {
+        "success": function (data) {
             if (data.Error || data.Response)
                 cuvantulexista = 0;
         }
