@@ -281,19 +281,26 @@ function skip() {
     punctaj_player = parseInt(document.getElementById("punctaj_player" + playerturn).innerHTML);
     punctaj_player = punctaj_player - 10;
     document.getElementById("punctaj_player" + playerturn).innerHTML = punctaj_player;
+    for (var c = 1; c <= 7; c++) {
+        document.getElementById("lp" + playerturn + c).setAttribute("draggable", "false");
+        document.getElementById("lp" + (3 - playerturn) + c).setAttribute("draggable", "true");
+    }
     playerturn = 3 - playerturn;
     restorify();
 }
 
 function exista(word) {
+
     alert(word);
+    var proxy = 'ba-simple-proxy.php';
     var cuvantulexista = 1;
     jQuery.ajax({
-        "async": false, //cannot be false for JSONP
-        "url": "http://api.wordreference.com/0.8/ff175/json/roen/" + word,
+        "async": false,
+        "url": proxy + "?url=" + "http://api.wordreference.com/0.8/ff175/json/roen/" + word,
         "dataType": 'json',
         "method": "GET",
         "success": function (data) {
+            console.log(data);
             if (data.Error || data.Response)
                 cuvantulexista = 0;
         }
