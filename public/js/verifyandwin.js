@@ -197,22 +197,18 @@ function verify(){
             } 
             else{
                 ok = 0;
-                alert("RESPONSE");
             }
         }
 
         if (ok != 0) {
             if (cuvinteadaugate.length == 0) {
                 ok = 0;
-                alert("AICI");
             }
             if(checkadjacency() == 0) {
                 ok = 0;
-                alert("AICI2");
             }
             if(checksingleword() == 0) {
                 ok =0;
-                alert("AICI3");
             }
         }
 
@@ -292,18 +288,14 @@ function skip() {
 function exista(word) {
 
     alert(word);
-    var proxy = 'js/ba-simple-proxy.php?url=';
     var uri = "http://api.wordreference.com/0.8/ff175/json/roen/" + word;
-    uri = encodeURIComponent(uri);
-    alert(proxy + uri);
     var cuvantulexista = 1;
     jQuery.ajax({
         "async": false,
-        "url": proxy + uri,
+        "url": uri,
         "dataType": 'json',
         "method": "GET",
         "success": function (data) {
-            alert("HERE!");
             if (data.Error || data.Response)
                 cuvantulexista = 0;
         }
