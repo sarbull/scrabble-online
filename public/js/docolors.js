@@ -6,9 +6,9 @@ function do_colors(){
 
 	//daca patratica nu trebuie colorata
 	if(random_number == 1)
-		style="background-image:url(images/darker.png)";
+		style="background-image:url(css/images/darker.png)";
 	else
-		style="background-image:url(images/lighter.png)";
+		style="background-image:url(css/images/lighter.png)";
 
 	//Culoarea roz
 	if((i == j || (i+j) == 16) && (( 2 <= i && i <=5) || 11 <= i && i <= 14))
