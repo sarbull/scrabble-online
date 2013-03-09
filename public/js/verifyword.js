@@ -13,6 +13,6 @@ function verifyword(str) {
   }
   //word.php will search for the $_GET['word'] existance in
   //the words database and return 1 for valid, 0 for invalid in plain text
-  xmlhttp.open("GET", "word.php?word=" + str, true);
+  xmlhttp.open("GET", "includes/word.php?word=" + str, true);
   xmlhttp.send();
 }
