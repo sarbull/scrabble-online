@@ -98,16 +98,16 @@ h3 {
     cursor:pointer;
 }
 
-#butonpag {
+#buttons input[type="button"]{
     font-family: 'Elsie Swash Caps', cursive;
-	font-size: 22px;
-	margin: 0 auto;
-	margin-bottom: 20px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	width: 150px;
-	position: relative;
-	left: -20px;
+    font-size: 22px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    width: 150px;
+    position: relative;
+    left: -20px;
     cursor:pointer;
 }
 
@@ -130,4 +130,37 @@ h3 {
     position: relative;
     left: -20px;
     cursor:pointer;
+}
+
+#scrabblelogo {
+    margin:auto;
+    width:600px;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom:15px;
+}
+
+#buttons {
+    width:800px;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.score {
+    width:50px;
+    float:left;
+}
+
+#punctaj_player1 {
+    margin-bottom: 40px;
+    float:left;
+    width:150px;
+}
+
+#punctaj_player2 {
+    margin-bottom: 40px;
+    float:left;
+    width:150px;
 }

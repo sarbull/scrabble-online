@@ -1,117 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <meta http-equiv="Access-Control-Allow-Origin" content="*">
-        <title>Scrabble Online</title>
-        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen, projection" />
-        <script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
-        <script src="js/globals.js" type="text/javascript"></script>
-      	<script src="js/docolors.js" type="text/javascript"></script>
-      	<script src="js/draganddrop.js" type="text/javascript"></script>
-        <script src="js/fadeoutandlogin.js" type="text/javascript"></script>
-        <script src="js/letterrandomizer.js" type="text/javascript"></script>
-        <script src="js/verifyandwin.js" type="text/javascript"></script>
-      	<link href='http://fonts.googleapis.com/css?family=Elsie+Swash+Caps' rel='stylesheet' type='text/css'>
-    </head>
-    
-    <body>
-        <div id = "login" style="">
-            <form>
-                <table>
-                    <tr>
-                        <td>First Player:</td>
-                        <td><input id="iinput_one" class="input_2" type="text" name="firstplayer"></td>
-                    </tr>
-                    <tr>
-                        <td>Second Player:</td>
-                        <td><input id="iinput_doi" class="input_2" type="text" name="secondplayer"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="text-align:right;"> <input id = "blogin" type="button" name="Login" value="Start Game" onclick="dologin()"></td>
-                    </tr>
-                </table>
-            </form>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Scrabble Online</title>
+    <link href="http://fonts.googleapis.com/css?family=Elsie+Swash+Caps" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen, projection" />
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/globals.js"></script>
+    <script src="js/docolors.js"></script>
+    <script src="js/draganddrop.js"></script>
+    <script src="js/fadeoutandlogin.js"></script>
+    <script src="js/letterrandomizer.js"></script>
+    <script src="js/verifyandwin.js"></script>
+</head>
+<body>
+    <div id="login">
+        <form>
+            <table>
+                <tr>
+                    <td>First Player:</td>
+                    <td><input id="iinput_one" class="input_2" type="text" name="firstplayer"></td>
+                </tr>
+                <tr>
+                    <td>Second Player:</td>
+                    <td><input id="iinput_doi" class="input_2" type="text" name="secondplayer"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:right;">
+                        <input id="blogin" type="button" name="Login" value="Start Game" onclick="dologin()">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div><!-- #login end  -->
+    <div id="others">
+        <div id="scrabblelogo">
+            <img id="monlogo" src="images/logo.png" alt="Scrabble logo">
         </div>
-                
-        <div id = "others"> 
-    	    <div align="center"> <img id="monlogo" src="images/logo.png"> </div>
-        
-	        <div id="wrap" style="">
-		        <div id="player1">
-		    	    <h3 id="player_unu">Player 1</h3>
-                    Scor: <div id="punctaj_player1">0</div>
-                    <br>
-                    <br>
-		    	    <div id="letters_player1">
-		    		    <div id="lp11" class="litera" draggable="true" ondragstart="drag(event)"></div>
-		    		    <div id="lp12" class="litera" draggable="true" ondragstart="drag(event)"></div>
-		    		    <div id="lp13" class="litera" draggable="true" ondragstart="drag(event)"></div>
-		    		    <div id="lp14" class="litera" draggable="true" ondragstart="drag(event)"></div>
-		    		    <div id="lp15" class="litera" draggable="true" ondragstart="drag(event)"></div>
-                        <div id="lp16" class="litera" draggable="true" ondragstart="drag(event)"></div>
-                        <div id="lp17" class="litera" draggable="true" ondragstart="drag(event)"></div>
-		    	    </div>
-		        </div>
-	    	
-                <div id="joc"> 
-		            <script> 
-                        //functie de creare a tabelei de joc
-					    var table_size = 16;
-					    var style = '';
-					    var seccond_diag = 16;
-					    document.write('<table id="table" border="0" style="" cellpadding="0" cellspacing="0">');
-					    for(var i = 1; i < table_size; i++){ 
-						    document.write('<tr id="r' + i + '">');
-						    for(var j = 1; j < table_size; j++){
-							    do_colors();
-							    document.write('<td id="c'+ i + "_" + j +'" ondrop="drop(event)" ondragover="allowDrop(event)" style="' + style + '"></td>');
-							    style = '';
-						    }
-						    document.write("</tr>");
-					    }
-					    document.write("</table>");
-		            </script>
-		        </div>
-
-		        <div id="player2">
-		    	    <h3 id="player_doi">Player 2</h3>
-                    Scor: <div id="punctaj_player2">0</div>
-                    <br>
-                    <br>
-                    <div id="letters_player2">
-                        <div id="lp21" class="litera" draggable="false" ondragstart="drag(event)"></div>
-                        <div id="lp22" class="litera" draggable="false" ondragstart="drag(event)"></div>
-                        <div id="lp23" class="litera" draggable="false" ondragstart="drag(event)"></div>
-                        <div id="lp24" class="litera" draggable="false" ondragstart="drag(event)"></div>
-                        <div id="lp25" class="litera" draggable="false" ondragstart="drag(event)"></div>
-                        <div id="lp26" class="litera" draggable="false" ondragstart="drag(event)"></div>
-                        <div id="lp27" class="litera" draggable="false" ondragstart="drag(event)"></div>
-                    </div>
-		        </div>
-		        <br style="clear:both;">
-   		    </div>
-        
-            <script>
-                randomlettersofdoom(1);
-                randomlettersofdoom(2);
-            </script>
-
-            <br>
-
-            <div align="center">
-                <input id = "butonpag" type="button" name="Verificare" value="Verificare" onclick="verify()">
-                <input id = "butonpag" type="button" name="Restore" value="Restore" onclick="restorify()">
-                <input id = "butonpag" type="button" name="Skip turn!" value="Skip turn" onclick="skip()">
-                <input id = "butonpag" type="button" name="Incheiere joc!" value="Incheiere joc"
-                    onclick="finishgamebutton()">
-                <input id = "butonpag" type="button" name="Ma dau batut!" value="Ma dau batut" onclick="giveup()">
-            </div>
-        </div>
-
+        <div id="wrap" style="">
+            <div id="player1">
+                <h3 id="player_unu">Player 1</h3>
+                <div class="score">Scor:</div>
+                <div id="punctaj_player1">
+                    0
+                </div><!-- #letters_player1 end  -->
+                <br style="clear:both;">
+                <div id="letters_player1">
+                    <div id="lp11" class="litera" draggable="true" ondragstart="drag(event)"></div>
+                    <div id="lp12" class="litera" draggable="true" ondragstart="drag(event)"></div>
+                    <div id="lp13" class="litera" draggable="true" ondragstart="drag(event)"></div>
+                    <div id="lp14" class="litera" draggable="true" ondragstart="drag(event)"></div>
+                    <div id="lp15" class="litera" draggable="true" ondragstart="drag(event)"></div>
+                    <div id="lp16" class="litera" draggable="true" ondragstart="drag(event)"></div>
+                    <div id="lp17" class="litera" draggable="true" ondragstart="drag(event)"></div>
+                </div><!-- #letters_player1 end  -->
+            </div><!-- #player1 end  -->
+            <div id="joc">
+                <script> 
+                    //functie de creare a tabelei de joc
+                    var table_size = 16;
+                    var style = '';
+                    var seccond_diag = 16;
+                    document.write('<table id="table" border="0" style="" cellpadding="0" cellspacing="0">');
+                    for(var i = 1; i < table_size; i++){ 
+                        document.write('<tr id="r' + i + '">');
+                        for(var j = 1; j < table_size; j++){
+                            do_colors();
+                            document.write('<td id="c'+ i + "_" + j +'" ondrop="drop(event)" ondragover="allowDrop(event)" style="' + style + '"></td>');
+                            style = '';
+                        }
+                        document.write("</tr>");
+                    }
+                    document.write("</table>");
+                </script>
+            </div><!-- #player2 joc  -->
+            <div id="player2">
+                <h3 id="player_doi">Player 2</h3>
+                <div class="score">
+                    Scor:
+                </div><!-- #score end  -->
+                <div id="punctaj_player2">
+                    0
+                </div><!-- #punctaj_player2 end  -->
+                <br style="clear:both;">
+                <div id="letters_player2">
+                    <div id="lp21" class="litera" draggable="false" ondragstart="drag(event)"></div>
+                    <div id="lp22" class="litera" draggable="false" ondragstart="drag(event)"></div>
+                    <div id="lp23" class="litera" draggable="false" ondragstart="drag(event)"></div>
+                    <div id="lp24" class="litera" draggable="false" ondragstart="drag(event)"></div>
+                    <div id="lp25" class="litera" draggable="false" ondragstart="drag(event)"></div>
+                    <div id="lp26" class="litera" draggable="false" ondragstart="drag(event)"></div>
+                    <div id="lp27" class="litera" draggable="false" ondragstart="drag(event)"></div>
+                </div><!-- #letters_player2 end  -->
+            </div><!-- #player2 end  -->
+            <br style="clear:both;">
+        </div><!-- #wrap end  -->
         <script>
-            restore();
+            randomlettersofdoom(1);
+            randomlettersofdoom(2);
         </script>
-
-    </body>
+        <br>
+        <div id="buttons">
+            <input type="button" name="Verificare" value="Verificare" onclick="verify()">
+            <input type="button" name="Restore" value="Restore" onclick="restorify()">
+            <input type="button" name="Skip turn!" value="Skip turn" onclick="skip()">
+            <input type="button" name="Incheiere joc!" value="Incheiere joc" onclick="finishgamebutton()">
+            <input type="button" name="Ma dau batut!" value="Ma dau batut" onclick="giveup()">
+        </div>
+    </div><!-- #others end  -->
+    <script>restore();</script>
+</body>
 </html>
