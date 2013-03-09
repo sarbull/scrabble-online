@@ -8,11 +8,7 @@ function verifyword(str) {
   }
   xmlhttp.onreadystatechange = function() {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-      //1 for valid
       return xmlhttp.responseText;
-    } else {
-      //0 for invalid
-      return 0;
     }
   }
   //word.php will search for the $_GET['word'] existance in
