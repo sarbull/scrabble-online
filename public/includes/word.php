@@ -9,9 +9,9 @@ $mysqli->query("SET NAMES 'utf8'");
 $query = $mysqli->query("SELECT * FROM valid_words WHERE word = '$word';");
 
 if (isset($query)) {
-	return 1;
+	echo "1";
 } else {
-	return 0;
+	echo "0";
 }
 
 ?>
