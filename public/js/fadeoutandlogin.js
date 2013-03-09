@@ -2,6 +2,7 @@
 
 var fade_in_from = 0;
 var fade_out_from = 10;
+
 function fadeIn(element){
     //console.log('Got: '+element);
     var target = document.getElementById(element);

@@ -1,4 +1,5 @@
-function randomlettersofdoom(player){ //functie pentru adaugare de litere random pe placuta cu litere a jucatorilor; player poate fi 1 sau 2
+//functie pentru adaugare de litere random pe placuta cu litere a jucatorilor; player poate fi 1 sau 2
+function randomlettersofdoom(player){
     if (litereramaseinsac != 0) {
         var i;
         for (i = 1; i < 8; i++) {
