@@ -3,20 +3,20 @@
 }
 
 body {
-	background-color: #ffffff;
+    background-color: #ffffff;
     background-image:url(images/bg.jpg);
     background-repeat: repeat;
-	font-family: Tahoma, Arial;
-	font-size:15px;
+    font-family: Tahoma, Arial;
+    font-size:15px;
 }
 
 #wrap {
-	margin:0 auto;
-	width:950px;
+    margin:0 auto;
+    width:950px;
 }
 
 #table td {
-	border:1px solid #333333;
+    border:1px solid #333333;
     width:30px;
     height:30px;
     font-family: 'Elsie Swash Caps', cursive;
@@ -44,26 +44,26 @@ h3 {
 }
 
 #table {
-	border:1px solid #333333;
-	text-align:center;
-	margin-right: 10px;
+    border:1px solid #333333;
+    text-align:center;
+    margin-right: 10px;
 }
 
 #joc {
-	float:left;
-	width:530px;
-	margin-right: 10px;
+    float:left;
+    width:530px;
+    margin-right: 10px;
 }
 
 #player1 {
-	float:left;
-	width:200px;
-	margin-right: 10px;
+    float:left;
+    width:200px;
+    margin-right: 10px;
 }
 
 #player2 {
-	float:left;
-	width:200px;
+    float:left;
+    width:200px;
 }
 
 #login {
@@ -84,9 +84,9 @@ h3 {
 }
 
 #monlogo {
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	margin-bottom: 15px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    margin-bottom: 15px;
 }
 
 #blogin {
