@@ -2,7 +2,7 @@ Scrabble-Online
 ===============
 
 A simple way to play online scrabble. We used JavaScript, HTML5, CSS, jQuery learned at WebDev. 
-<a href="http://webdev.rosedu.prg">WebDev</a> is a practical 11-week web development course organised by <a href="http://rosedu.prg">ROSEdu</a>.
+<a href="http://webdev.rosedu.org">WebDev</a> is a practical 11-week web development course organised by <a href="http://rosedu.org">ROSEdu</a>.
 
 ## Team
 - <a href="https://www.facebook.com/bogdan.bresug">Breșug Bogdan</a>
