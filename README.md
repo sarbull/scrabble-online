@@ -10,4 +10,9 @@ A simple way to play online scrabble. We used JavaScript, HTML5, CSS, jQuery lea
 - <a href="https://www.facebook.com/nichita.zloteanu">Zloteanu Nichita</a>
 
 ## Preview
-A preview of the game is right here: <a href="http://www.sarbull.ro/Scrabble-Online">http://www.sarbull.ro/Scrabble-Online</a>.
+
+![My image](http://www.sarbull.ro/Scrabble-Online/scrabble-online.png)
+
+
+## Play the game
+Click here: <a href="http://www.sarbull.ro/Scrabble-Online">http://www.sarbull.ro/Scrabble-Online</a>.
